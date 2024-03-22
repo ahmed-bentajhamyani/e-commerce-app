@@ -18,8 +18,10 @@ export default {
         },
         text: {
           secondary: '#999',
+        },
+        backgroundImage: {
+          'pIcon': "url('../public/test.jpg')",
         }
-
       },
     },
   },
