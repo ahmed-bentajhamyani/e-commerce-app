@@ -14,11 +14,15 @@ export default {
         secondary: '#555',
         bg: {
           secondary: '#EEE',
+          disabled: '#eeeeee'
+        },
+        section: {
+          bg: '#f8fafc'
         },
         text: {
           secondary: '#999',
-        }
-
+        },
+        destructive: '#d92b2b'
       },
     },
   },
