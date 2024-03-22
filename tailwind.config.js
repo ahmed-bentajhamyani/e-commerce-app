@@ -8,12 +8,19 @@ export default {
     fontFamily: {
       'poppins': ['Poppins', 'sans-serif']
     },
-    colors: {
-      primary: '#111',
-      secondary: '#555',
-      'bg-color': '#EEE',
+    extend: {
+      colors: {
+        primary: '#111',
+        secondary: '#555',
+        bg: {
+          secondary: '#EEE',
+        },
+        text: {
+          secondary: '#999',
+        }
+
+      },
     },
-    extend: {},
   },
   plugins: [],
 }
