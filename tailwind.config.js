@@ -5,7 +5,24 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    fontFamily: {
+      'poppins': ['Poppins', 'sans-serif']
+    },
+    extend: {
+      colors: {
+        primary: '#111',
+        secondary: '#555',
+        bg: {
+          secondary: '#EEE',
+        },
+        text: {
+          secondary: '#999',
+        },
+        backgroundImage: {
+          'pIcon': "url('../public/test.jpg')",
+        }
+      },
+    },
   },
   plugins: [],
 }
