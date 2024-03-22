@@ -6,7 +6,8 @@ export default {
   ],
   theme: {
     fontFamily: {
-      'poppins': ['Poppins', 'sans-serif']
+      'poppins': ['Poppins', 'sans-serif'],
+      'playfair-display': ["Playfair Display", 'sans-serif']
     },
     extend: {
       colors: {
@@ -17,8 +18,10 @@ export default {
         },
         text: {
           secondary: '#999',
+        },
+        backgroundImage: {
+          'pIcon': "url('../public/test.jpg')",
         }
-
       },
     },
   },
