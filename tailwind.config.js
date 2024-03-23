@@ -1,30 +1,29 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     fontFamily: {
-      'poppins': ['Poppins', 'sans-serif'],
-      'playfair-display': ["Playfair Display", 'sans-serif']
+      poppins: ["Poppins", "sans-serif"],
+      "playfair-display": ["Playfair Display", "sans-serif"],
     },
     extend: {
+      screens: {
+        xs: "420px",
+      },
       colors: {
-        primary: '#111',
-        secondary: '#555',
+        primary: "#111",
+        secondary: "#555",
         bg: {
-          secondary: '#EEE',
+          secondary: "#EEE",
         },
         text: {
-          secondary: '#999',
+          secondary: "#999",
         },
         backgroundImage: {
-          'pIcon': "url('../public/test.jpg')",
-        }
+          pIcon: "url('../public/test.jpg')",
+        },
       },
     },
   },
   plugins: [],
-}
-
+};
