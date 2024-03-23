@@ -18,7 +18,7 @@ export default {
           disabled: '#eeeeee'
         },
         section: {
-          bg: '#f8fafc'
+          bg: '#FBFBFB'
         },
         text: {
           secondary: '#999',

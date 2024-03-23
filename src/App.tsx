@@ -1,13 +1,15 @@
+import Navbar from "@/components/Navbar"
 import LoginPage from "@/pages/LoginPage"
-import Navbar from "./components/Navbar"
-
+import RegisterPage from "@/pages/RegisterPage"
 
 function App() {
   return (
     <>
-      <LoginPage />
       <Navbar></Navbar>
+      <div className="flex flex-col gap-10">
       <LoginPage />
+      <RegisterPage />
+      </div>
     </>
   )
 }

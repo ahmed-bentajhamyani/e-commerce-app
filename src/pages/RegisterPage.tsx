@@ -11,15 +11,17 @@ import { Input } from "@/components/shadcn/ui/input";
 import { Button } from "@/components/shadcn/ui/button";
 
 const formSchema = z.object({
-    displayName: z.string()
+    displayName: z.string({ required_error: "This field is required" })
         .min(1, { message: "This field is required" }),
-    email: z.string()
-        .email({ message: "Invalid email address." })
-        .min(1, {
-            message: "This field is required",
-        }),
-    password: z.string()
+    email: z.string({ required_error: "This field is required" })
+        .email()
         .min(1, { message: "This field is required" }),
+    password: z.string({ required_error: "This field is required" })
+        .min(4),
+    confirmPassword: z.string({ required_error: "This field is required" }).min(4)
+}).refine(({ password, confirmPassword }) => password === confirmPassword, {
+    message: "Passwords do not match",
+    path: ["confirmPassword"],
 })
 export default function RegisterPage() {
     const form = useForm<z.infer<typeof formSchema>>(
@@ -34,18 +36,33 @@ export default function RegisterPage() {
             })
             console.log(userCredential.user);
         }).catch((err: FirebaseError) => {
-            if (err.code == 'auth/invalid-credential') {
-                console.log("Invalid!")
+            switch (err.code) {
+                case 'auth/invalid-credential':
+                    form.setError('root', { message: "Invalid email or password" })
+                    break;
+                case 'auth/email-already-in-use':
+                    form.setError('email', { message: "Email already in use" })
+                    break;
+                default:
+                    form.setError('root', {
+                        message: `An error has occured during the registration.
+                    ${err.code} - ${err.name}\n
+                    ${err.message}`
+                    })
+                    break;
             }
-            else
-                console.error(err.code, err.name, err.message);
         }
         )
     }
     return (
-        <main className="flex min-h-full flex-col items-center justify-center p-4 md:p-24">
-            <section className=" bg-section-bg flex flex-col w-full md:w-[70%] p-2 md:p-24">
-                <h1>Register</h1>
+        <main className="flex min-h-full flex-col items-center justify-center">
+            <section className=" bg-section-bg flex flex-col w-full md:w-[70%] p-2 gap-10 md:p-8">
+                <h1 className="font-playfair-display text-2xl font-bold">Register</h1>
+                {form.formState.errors.root &&
+                    <div className="w-full flex justify-center">
+                        <p className="text-destructive">{form.formState.errors.root.message}</p>
+                    </div>
+                }
                 <Form {...form}>
                     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
                         <FormField
@@ -80,6 +97,19 @@ export default function RegisterPage() {
                             render={({ field }) => (
                                 <FormItem>
                                     <FormLabel>PASSWORD:</FormLabel>
+                                    <FormControl>
+                                        <Input {...field} />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="confirmPassword"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>CONFIRM PASSWORD:</FormLabel>
                                     <FormControl>
                                         <Input {...field} />
                                     </FormControl>
