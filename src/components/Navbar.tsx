@@ -96,11 +96,11 @@ function Navbar() {
                   </img>
                 </li>
               <li className={`transition-all duration-[0.25S] ${isFixed? 'pr-4 pl-4' : 'pr-6 pl-6'} h-full border-l border-gray-300 flex items-center justify-center transition ease-in duration-100 hover:bg-slate-100 cursor-pointer`}>
-                <img className="h-7" src="../../public/heartIcon.png">
+                <img className="h-7" src="/heartIcon.png">
                 </img>
               </li>
               <li className={`transition-all duration-[0.25S] ${isFixed? 'pr-4 pl-4' : 'pr-6 pl-6'} h-full border-l border-gray-300 flex items-center justify-center transition ease-in duration-100 hover:bg-slate-100 cursor-pointer`}>
-                <img className="h-7" src="../../public/handBadIcon.png">
+                <img className="h-7" src="/handBadIcon.png">
                 </img>
               </li>
             </ul>

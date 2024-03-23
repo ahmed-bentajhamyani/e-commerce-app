@@ -20,7 +20,7 @@ export default {
           secondary: '#999',
         },
         backgroundImage: {
-          'pIcon': "url('../public/test.jpg')",
+          'pIcon': "url('/test.jpg')",
         }
       },
     },

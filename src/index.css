@@ -5,6 +5,5 @@
 @tailwind utilities;
 
 body {
-  height: 1000px;
   font-family: "Poppins", sans-serif;
 }
