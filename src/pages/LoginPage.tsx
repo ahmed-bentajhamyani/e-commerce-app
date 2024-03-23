@@ -76,7 +76,7 @@ export default function LoginPage() {
                                 </FormItem>
                             )}
                         />
-                        <div className="w-full flex flex-col items-center">
+                        <div className="w-full flex flex-col items-center gap-2">
                             <Button className="w-full p-2 uppercase rounded-none transition ease-in-out delay-150" disabled={!form.formState.isValid} type="submit">Sign In</Button>
                             <p>Don't have an account? <Button className=" text-lg" variant={"link"}>Register</Button></p>
                         </div>

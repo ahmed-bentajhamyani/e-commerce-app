@@ -60,7 +60,7 @@ export default function RegisterPage() {
                 <h1 className="font-playfair-display text-2xl font-bold">Register</h1>
                 {form.formState.errors.root &&
                     <div className="w-full flex justify-center">
-                        <p className="text-destructive">{form.formState.errors.root.message}</p>
+                        <p className="text-error">{form.formState.errors.root.message}</p>
                     </div>
                 }
                 <Form {...form}>

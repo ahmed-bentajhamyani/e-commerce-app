@@ -22,9 +22,10 @@ export default {
         },
         text: {
           secondary: '#999',
+          destructive: '#333'
         },
         foreground: '#fff',
-        destructive: '#d92b2b',
+        error: '#d92b2b',
         backgroundImage: {
           'pIcon': "url('../public/test.jpg')",
         }
