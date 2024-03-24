@@ -24,7 +24,7 @@ function Navbar() {
 
   }, []);
 
-  const { cartQuantity, setShowCart } = useCart();
+  const { setShowCart } = useCart();
 
   return (
     <header>
