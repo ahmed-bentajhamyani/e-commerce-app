@@ -1,10 +1,10 @@
-import React, { ReactNode } from "react";
+import { ReactNode } from "react";
 import { Swiper } from "swiper/react";
 
 import "swiper/css";
+import "swiper/css/autoplay";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
-import "swiper/css/autoplay";
 import { Autoplay, FreeMode, Pagination } from "swiper/modules";
 
 export default function SwiperBox({ children }: { children: ReactNode }) {
