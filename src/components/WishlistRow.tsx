@@ -1,31 +1,31 @@
 import { Button } from "@/components/shadcn/ui/button";
-import { WishlistData } from "@/pages/WishlistPage";
+import { WishlistItem } from "@/context/WishlistContext";
 
 interface WishlistRowProps {
-    wishlistData: WishlistData
+    wishlistItem: WishlistItem
     callbackFn: () => void;
 }
 
-export default function WishlistRow({ wishlistData, callbackFn }: WishlistRowProps) {
+export default function WishlistRow({ wishlistItem, callbackFn }: WishlistRowProps) {
     return <tr className="border-b-2">
         <td className="py-2">
             <a className="w-max flex" href="/en/saint_laurent/women/bags/shoulder-bags/322003">
-                <img className="h-36" src={wishlistData.image} alt={wishlistData.name.toUpperCase()} />
+                <img className="h-36" src={wishlistItem.image} alt={wishlistItem.name} />
             </a>
         </td>
         <td>
             <a className="w-max flex flex-col" href="/en/saint_laurent/women/bags/shoulder-bags/322003">
-                <h4 className="font-playfair-display font-bold text-xl uppercase">{wishlistData.companyName}</h4>
+                <h4 className="font-playfair-display font-bold text-xl uppercase">{wishlistItem.companyName}</h4>
                 <p className="uppercase font-light">
-                    {wishlistData.name}
+                    {wishlistItem.name}
                 </p>
             </a>
         </td>
         <td>
             {
-                wishlistData.size &&
+                wishlistItem.size &&
                 <span className="text-center">
-                    <p className="font-light text-sm">{wishlistData.size}</p>
+                    <p className="font-light text-sm">{wishlistItem.size}</p>
                 </span>
             }
         </td>
@@ -37,7 +37,7 @@ export default function WishlistRow({ wishlistData, callbackFn }: WishlistRowPro
                         currency: 'EUR',
                         minimumFractionDigits: 2,
                         maximumFractionDigits: 2,
-                    }).format(wishlistData.price)
+                    }).format(wishlistItem.price)
                 }</p>
             </span>
         </td>

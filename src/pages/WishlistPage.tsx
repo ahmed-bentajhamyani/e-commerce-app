@@ -1,23 +1,9 @@
 import WishlistRow from "@/components/WishlistRow";
-import { useState } from "react";
+import { useWishlistContext } from "@/context/WishlistContext";
 
-export interface WishlistData {
-    companyName: string,
-    name: string;
-    price: number;
-    size?: string;
-    image?: string;
-}
 
 export default function WishListPage() {
-    const [wishlistDataList, setWishlistDataList] = useState<WishlistData[]>([{ companyName: "Saint Laurent", name: "Borsa Manon Mini", price: 14500, image: "https://images.eleonorabonucci.com/photo/322003/964518/900/1200" },
-    { companyName: "Margaret Howell", name: "T-shirt in Maglia", price: 225, size: "S", image: "https://images.eleonorabonucci.com/photo/310347/964801/900/1200" }
-    ])
-
-    const deleteWishlistRow = (index: number) => {
-        setWishlistDataList(wishlistDataList.filter((_, i) => i !== index))
-    }
-
+    const { wishlistItemList, removeWishlistItem } = useWishlistContext()
     return (
         <main className="flex min-h-full flex-col items-center justify-center">
             <section className="w-full flex flex-col items-center p-2 gap-10 md:p-8">
@@ -34,8 +20,8 @@ export default function WishListPage() {
                     </thead>
                     <tbody>
                         {
-                            wishlistDataList.map((wishlistData, index) =>
-                                <WishlistRow key={index} wishlistData={wishlistData} callbackFn={() => deleteWishlistRow(index)} />)
+                            wishlistItemList.map((wishlistItem, index) =>
+                                <WishlistRow key={index} wishlistItem={wishlistItem} callbackFn={() => removeWishlistItem(index)} />)
                         }
                     </tbody>
                 </table>

@@ -1,20 +1,20 @@
-import Navbar from "@/components/Navbar"
-import LoginPage from "@/pages/LoginPage"
-import RegisterPage from "@/pages/RegisterPage"
-import Footer from "@/components/Footer"
+
 import WishListPage from "@/pages/WishlistPage"
+import { WishlistProvider } from "./context/WishlistContext"
+import { useEffect } from "react"
 
 function App() {
+  useEffect(() => {
+    const wishlistItemList = [
+      { companyName: "Saint Laurent", name: "Borsa Manon Mini", price: 14500, image: "https://images.eleonorabonucci.com/photo/322003/964518/900/1200" },
+      { companyName: "Margaret Howell", name: "T-shirt in Maglia", price: 225, size: "S", image: "https://images.eleonorabonucci.com/photo/310347/964801/900/1200" }
+    ]
+    localStorage.setItem("wishlistItemList", JSON.stringify(wishlistItemList))
+  }, [])
   return (
-    <>
-      <Navbar></Navbar>
-      <div className="flex flex-col gap-10">
-        <LoginPage />
-        <RegisterPage />
-        <WishListPage />
-      </div>
-      <Footer />
-    </>
+    <WishlistProvider>
+      <WishListPage />
+    </WishlistProvider>
   )
 }
 
