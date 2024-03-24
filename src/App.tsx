@@ -1,17 +1,16 @@
-import Navbar from "@/components/Navbar"
-import LoginPage from "@/pages/LoginPage"
-import RegisterPage from "@/pages/RegisterPage"
+import { useEffect } from "react";
+import ProductPage from "./pages/ProductPage";
 
 function App() {
-  return (
-    <>
-      <Navbar></Navbar>
-      <div className="flex flex-col gap-10">
-      <LoginPage />
-      <RegisterPage />
-      </div>
-    </>
-  )
+  useEffect(() => {
+    const cartItem = [
+      { id: 1, quantity: 2 },
+      { id: 2, quantity: 1 },
+    ];
+    localStorage.setItem("CartProducts", JSON.stringify(cartItem));
+  }, []);
+
+  return <ProductPage />;
 }
 
-export default App
+export default App;
