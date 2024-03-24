@@ -4,6 +4,7 @@ import { useState } from "react";
 import Topbar from './topbar.tsx'
 import Logo from "./logo.tsx";
 import { useCart } from "../context/CartContext.tsx";
+import Mobnavbar from "./Mobnavbar.tsx";
 
 function Navbar() {
 
@@ -28,11 +29,14 @@ function Navbar() {
 
   return (
     <header>
-      <Topbar />
-      <Logo />
+
+      <section className="hidden lg:block">
+        <Topbar />
+        <Logo  />
+      </section>
 
 
-      <nav className={`transition-all duration-[0.25S] ${isFixed ? 'h-14 top-0 pr-[47px] fixed w-full bg-white shadow-sm justify-between' : 'h-20 mb-9 pr-[50px]'} flex justify-end`}>
+      <nav className={`hidden lg:flex transition-all duration-[0.25S] ${isFixed ? ' h-14 top-0 pr-[47px] fixed w-full bg-white shadow-sm justify-between' : 'h-20 mb-9 pr-[50px]'} flex justify-end`}>
         <img className={`${isFixed ? '' : 'hidden'} mt-4 ml-6 h-6`} src="/logo.png">
 
         </img>
@@ -92,21 +96,29 @@ function Navbar() {
           </ul>
           <ul className="flex ml-3">
             <li onClick={() => setshowSearch(true)} className={`transition-all duration-[0.25S] ${isFixed ? 'pr-4 pl-4' : 'pr-6 pl-6'} h-full border-l border-gray-300 flex items-center justify-center transition ease-in duration-100 hover:bg-slate-100 cursor-pointer`}>
+              
               <img className="h-7" src="../../public/searchIcon.svg">
-
               </img>
             </li>
             <li className={`transition-all duration-[0.25S] ${isFixed ? 'pr-4 pl-4' : 'pr-6 pl-6'} h-full border-l border-gray-300 flex items-center justify-center transition ease-in duration-100 hover:bg-slate-100 cursor-pointer`}>
+                <div className={`${isFixed ? 'top-[10px] right-[52px]' : 'top-[161px] right-[61px]'} absolute flex items-center justify-center h-4 w-4 bg-black rounded-full text-white`}>
+                  <span className="text-xs">1</span>
+                </div>
               <img className="h-7" src="../../public/heartIcon.png">
               </img>
             </li>
             <li onClick={() => setShowCart(true)} className={`transition-all duration-[0.25S] ${isFixed ? 'pr-4 pl-4' : 'pr-6 pl-6'} h-full border-l border-gray-300 flex items-center justify-center transition ease-in duration-100 hover:bg-slate-100 cursor-pointer`}>
+              <div className={`absolute ${isFixed ? 'top-[9px] right-[115px]' : 'top-[161px] right-[137px]'}  flex items-center justify-center h-4 w-4 bg-black rounded-full text-white`}>
+                  <span className="text-xs">1</span>
+                </div>
               <img className="h-7" src="../../public/handBadIcon.png">
               </img>
             </li>
           </ul>
         </div>
       </nav>
+      <Mobnavbar/>
+
     </header>
   )
 }
