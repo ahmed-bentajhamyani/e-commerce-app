@@ -19,8 +19,6 @@ export default {
         text: {
           secondary: "#999",
         },
-        foreground: '#fff',
-        destructive: '#d92b2b',
         backgroundImage: {
           pIcon: "url('../public/test.jpg')",
         },
