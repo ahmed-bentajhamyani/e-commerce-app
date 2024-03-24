@@ -22,7 +22,7 @@ const ProductService = {
             });
     },
 
-    getGategories: async function () {
+    getCategories: async function () {
         return await axios.get(this.URL + 'categories.json');
     },
 
