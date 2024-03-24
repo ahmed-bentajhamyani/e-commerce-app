@@ -1,13 +1,5 @@
 import { HeartIcon } from "@radix-ui/react-icons";
-
-export type Product = {
-  id: number;
-  image: string;
-  name: string;
-  description: string;
-  price: number;
-  quantity: number;
-};
+import { Product } from "../types/Product";
 
 export interface IProductCard {
   style?: string;
@@ -21,7 +13,7 @@ export default function ProductCard({ style, data }: IProductCard) {
         <a href="" className=" cursor-pointer">
           <img
             className="transition-all scale-90 w-full"
-            src={data.image}
+            src={`/images/${data?.image}`}
             alt=""
           />
         </a>
@@ -31,10 +23,10 @@ export default function ProductCard({ style, data }: IProductCard) {
       </div>
       <div className="flex flex-col xs:text-sm text-xs transition-all md:text-base text-center">
         <h2 className="font-black uppercase font-playfair-display">
-          {data.name}
+          {data?.product_name}
         </h2>
-        <p className="uppercase font-light  ">{data.description}</p>
-        <p className="font-semibold">{data.price} $</p>
+        <p className="uppercase font-light  ">{data?.description}</p>
+        <p className="font-semibold">{data?.price} $</p>
       </div>
     </article>
   );
