@@ -22,7 +22,7 @@ const ProductService = {
             });
     },
 
-    getGategories: async function () {
+    getCategories: async function () {
         return await axios.get(this.URL + 'categories.json');
     },
 
@@ -30,6 +30,13 @@ const ProductService = {
         return await axios.get(this.URL + 'categories.json')
             .then(res => {
                 return res.data.find((c: { id: number; }) => c.id === id);
+            });
+    },
+
+    getCategoryByName: async function (name: string) {
+        return await axios.get(this.URL + 'categories.json')
+            .then(res => {
+                return res.data.find((c: { category_name: string; }) => c.category_name === name);
             });
     },
 };
