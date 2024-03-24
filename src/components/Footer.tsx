@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="w-screen flex flex-col bg-bg-secondary text-xl">
+    <footer className="w-full flex flex-col bg-bg-secondary text-xl">
       <div className="flex flex-col max-sm:gap-8 sm:grid sm:grid-cols-3 max-sm:pb-5 p-5 mt-8 mb-6 mx-6 md:p-3 pt-4 max-sm:mx-auto">
         <div className="flex flex-col col-span-1 gap-4 sm:gap-1">
           <h2 className="sm:text-lg md:text-xl capitalize">Contact Us</h2>

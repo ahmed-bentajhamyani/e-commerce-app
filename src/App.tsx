@@ -1,16 +1,33 @@
-import { useEffect } from "react";
-import ProductPage from "./pages/ProductPage";
+import ScrollToTop from "./utils/ScrollTop";
+import { Routes, Route } from "react-router-dom";
+
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import HomePage from "./pages/HomePage";
+
+// import HomePage from "./pages/HomePage";
+// import ProductsPage from "./pages/ProductsPage";
+// import ProductPage from "./pages/ProductPage";
+// import WishlistPage from "./pages/WishlistPage";
 
 function App() {
-  useEffect(() => {
-    const cartItem = [
-      { id: 1, quantity: 2 },
-      { id: 2, quantity: 1 },
-    ];
-    localStorage.setItem("CartProducts", JSON.stringify(cartItem));
-  }, []);
+  return (
+    <>
+      <Navbar />
+      <ScrollToTop>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          {/* <Route path="/products" element={<ProductsPage />} /> */}
+          {/* <Route path="/products/:id" element={<ProductPage />} /> */}
+          {/* <Route path="/wishlist" element={<WishlistPage />} /> */}
 
-  return <ProductPage />;
+          {/* <Route path="/login" element={<LoginPage />} /> */}
+          {/* <Route path="/register" element={<RegisterPage />} /> */}
+        </Routes>
+      </ScrollToTop>
+      <Footer />
+    </>
+  );
 }
 
 export default App;
