@@ -30,7 +30,7 @@ export default function ProductPage() {
   }
 
   return (
-    <section className="p-5 md:p-10 lg:p-16">
+    <section className="p-5 md:p-10 lg:py-5 lg:px-16">
       <section className="grid md:grid-cols-2 place-items-center">
         <img src={product?.image} alt="" className="h-96" />
         <div className="w-full mt-10 md:mt-2 md:px-5 lg:px-20">
