@@ -5,6 +5,7 @@ import Logo from "./Logo.tsx";
 import { useCart } from "../context/CartContext.tsx";
 import Mobnavbar from "./Mobnavbar.tsx";
 import { useNavigate } from "react-router-dom";
+import { useWishlistContext } from "@/context/WishlistContext.tsx";
 
 function Navbar() {
   const [isFixed, setIsFixed] = useState(false);
@@ -24,7 +25,7 @@ function Navbar() {
   }, []);
 
   const { cartQuantity, setShowCart } = useCart();
-
+  const { wishlistProductsAmount } = useWishlistContext();
   return (
     <header>
       <section className="hidden lg:block">
@@ -133,11 +134,12 @@ function Navbar() {
             </li>
             <li
               className={`transition-all duration-[0.25S] ${isFixed ? "pr-4 pl-4" : "pr-6 pl-6"} h-full border-l border-gray-300 flex items-center justify-center transition ease-in duration-100 hover:bg-slate-100 cursor-pointer`}
+              onClick={() => navigate("/wishlist")}
             >
               <div
                 className={`${isFixed ? "top-[9px] right-[128px]" : "top-[160px] right-[155px]"} absolute flex items-center justify-center h-5 w-5 bg-black rounded-full text-white`}
               >
-                <span className="text-xs">1</span>
+                <span className="text-xs">{wishlistProductsAmount}</span>
               </div>
               <svg
                 className="svg-icon"
