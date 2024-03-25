@@ -14,7 +14,7 @@ function CartProductCard({ product, cartProduct }: { product: Product, cartProdu
       className="flex justify-start items-center space-x-2 lg:space-x-7 p-4 rounded-3xl hover:bg-bg-secondary"
     >
       <img
-        src={`/images/${product?.image}`}
+        src={product?.image}
         alt=""
         className="w-16 md:w-20"
       />
