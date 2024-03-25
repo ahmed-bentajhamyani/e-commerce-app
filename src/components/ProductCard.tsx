@@ -65,7 +65,12 @@ export default memo(function ProductCard({ style, data }: IProductCard) {
           {data.product_name}
         </h2>
         <p className="uppercase font-light  ">{data?.description}</p>
-        <p className="font-semibold">{data?.price} $</p>
+        <p className="font-semibold">
+          {Intl.NumberFormat("en-US", {
+            style: "currency",
+            currency: "EUR",
+          }).format(data.price)}
+        </p>
       </div>
     </article>
   );

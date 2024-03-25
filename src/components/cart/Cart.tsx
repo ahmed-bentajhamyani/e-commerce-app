@@ -10,29 +10,24 @@ import { useNavigate } from "react-router-dom";
 export default function Cart() {
   const navigate = useNavigate();
 
-  const {
-    cartQuantity,
-    cartProducts,
-    deleteAll,
-    showCart,
-    setShowCart
-  } = useCart();
+  const { cartQuantity, cartProducts, deleteAll, showCart, setShowCart } =
+    useCart();
   const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
-    ProductService.getProducts().then((res) => setProducts(res?.data))
+    ProductService.getProducts().then((res) => setProducts(res?.data));
   }, []);
 
   const checkout = () => {
     deleteAll();
     setShowCart(false);
-    navigate('/');
-  }
+    navigate("/");
+  };
 
   return (
     <>
       <div
-        className={`flex flex-col justify-center items-center overflow-hidden text-primary bg-bg-secondary fixed w-4/5 sm:w-2/3 lg:w-2/5 h-screen top-0 right-0 z-50 transition-all duration-500 ${showCart ? 'translate-x-0' : 'translate-x-full'}`}
+        className={`flex flex-col justify-center items-center overflow-hidden text-primary bg-bg-secondary fixed w-4/5 sm:w-2/3 lg:w-2/5 h-screen top-0 right-0 z-50 transition-all duration-500 ${showCart ? "translate-x-0" : "translate-x-full"}`}
       >
         {/*header*/}
         <div className="flex items-center justify-between p-4 w-full border-b">
@@ -76,13 +71,18 @@ export default function Cart() {
           </div>
 
           {cartProducts.map((cartProduct: CartItem, index: number) => {
-            const product: Product = products.find((p) => p.id === cartProduct.id)!;
+            const product: Product = products.find(
+              (p) => p.id === cartProduct.id
+            )!;
             if (product) {
               return (
-                <CartProductCard key={index} product={product} cartProduct={cartProduct} />
+                <CartProductCard
+                  key={index}
+                  product={product}
+                  cartProduct={cartProduct}
+                />
               );
             }
-
           })}
         </div>
 
@@ -91,10 +91,15 @@ export default function Cart() {
           <div className="flex items-center justify-between w-full mb-2">
             <span className="font-semibold text-sm">Sous-total</span>
             <span className="font-semibold text-lg">
-              {cartProducts.reduce((total: number, cartProduct: Product) => {
-                const product = products.find((a) => a.id === cartProduct.id);
-                return total + (product?.price || 0) * cartProduct.quantity;
-              }, 0).toFixed(2)}{" "} Dhs
+              {Intl.NumberFormat("en-US", {
+                style: "currency",
+                currency: "EUR",
+              }).format(
+                cartProducts.reduce((total: number, cartProduct: Product) => {
+                  const product = products.find((a) => a.id === cartProduct.id);
+                  return total + (product?.price || 0) * cartProduct.quantity;
+                }, 0)
+              )}
             </span>
           </div>
           <Button
@@ -105,7 +110,10 @@ export default function Cart() {
           />
         </div>
       </div>
-      <div onClick={() => setShowCart(false)} className={`opacity-50 fixed inset-0 z-40 bg-black ${showCart ? '' : 'hidden'}`}></div>
+      <div
+        onClick={() => setShowCart(false)}
+        className={`opacity-50 fixed inset-0 z-40 bg-black ${showCart ? "" : "hidden"}`}
+      ></div>
     </>
   );
 }
