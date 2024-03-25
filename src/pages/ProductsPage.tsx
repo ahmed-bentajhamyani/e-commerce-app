@@ -31,47 +31,57 @@ export default function ProductsPage() {
   }, [color, products]);
 
   return (
-    <section className="w-full flex justify-center">
-      <div className="">
-        <WidgetFilter
-          title="color"
-          sub={[
-            "ALL",
-            "AZURE",
-            "BEIGE",
-            "BLACK",
-            "BLUE",
-            "BORDEAUX",
-            "BROWN",
-            "DENIM",
-            "DOVE",
-            "FUCHSIA",
-            "GREEN",
-            "GREY",
-            "IVORY",
-            "MULTICOLOR",
-            "ORANGE",
-            "PINK",
-            "PURPLE",
-            "RED",
-            "WHITE",
-            "YELLOW",
-          ]}
-          onColorChange={(value) => setColor(value)}
-        />
+    <section className="w-full flex flex-col justify-center">
+      <div className="w-full flex flex-col gap-4 bg-bg-secondary font-playfair-display uppercase font-semibold py-5 justify-center items-center">
+        <p className="">{params.category}</p>
+        <p className="font-poppins font-normal lowercase text-xs opacity-80">
+          men / new clothing /{" "}
+          <span className="opacity-80">{params.category}</span>
+        </p>
       </div>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mb-8">
-        {_products.length > 0
-          ? _products.map((item) => (
-              <ProductCard key={item.id} data={item} style="max-w-[260px]" />
-            ))
-          : null}
-      </div>
-      {_products.length === 0 ? (
-        <div className="flex-1 text-center self-center">
-          <p>No products of color {color} in stock at the moment.</p>
+      <div className="w-full flex justify-center">
+        {" "}
+        <div className="">
+          <WidgetFilter
+            title="color"
+            sub={[
+              "ALL",
+              "AZURE",
+              "BEIGE",
+              "BLACK",
+              "BLUE",
+              "BORDEAUX",
+              "BROWN",
+              "DENIM",
+              "DOVE",
+              "FUCHSIA",
+              "GREEN",
+              "GREY",
+              "IVORY",
+              "MULTICOLOR",
+              "ORANGE",
+              "PINK",
+              "PURPLE",
+              "RED",
+              "WHITE",
+              "YELLOW",
+            ]}
+            onColorChange={(value) => setColor(value)}
+          />
         </div>
-      ) : null}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mb-8">
+          {_products.length > 0
+            ? _products.map((item) => (
+                <ProductCard key={item.id} data={item} style="max-w-[260px]" />
+              ))
+            : null}
+        </div>
+        {_products.length === 0 ? (
+          <div className="flex-1 text-center self-center">
+            <p>No products of color {color} in stock at the moment.</p>
+          </div>
+        ) : null}
+      </div>
     </section>
   );
 }
