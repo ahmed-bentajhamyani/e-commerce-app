@@ -10,6 +10,7 @@ import ProductPage from "./pages/ProductPage";
 import WishlistPage from "./pages/WishlistPage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
+import SearchPage from "./pages/SearchPage"
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/products/:category" element={<ProductsPage />} />
           <Route path="/product/:id" element={<ProductPage />} />
           <Route path="/wishlist" element={<WishlistPage />} />
+          <Route path="/search/:key" element={<SearchPage />} />
 
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />

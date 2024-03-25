@@ -3,11 +3,14 @@ import { useCart } from "../context/CartContext.tsx";
 import { useNavigate } from "react-router-dom";
 
 function Mobnavbar() {
+
+  const navigate = useNavigate();
+  const [ inputField, setinputField] = useState("");
   const [showSearch, setshowSearch] = useState(false);
   const [showList, setshowList] = useState(false);
   const [isFixed, setIsFixed] = useState(false);
 
-  const navigate = useNavigate();
+
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY >= 60) {
@@ -38,6 +41,11 @@ function Mobnavbar() {
           className={` ${showSearch ? "block" : "hidden"} w-full flex items-center justify-center`}
         >
           <input
+            onChange={(e)=>{setinputField(e.target.value)}}
+            onKeyDown={(e)=>{
+              if (e.key == "Enter")
+                navigate(`/search/${inputField}`)
+            }}
             className="w-[50%] h-full focus:outline-none text-lg"
             placeholder="SEARCH & HIT ENTER . . ."
           />
