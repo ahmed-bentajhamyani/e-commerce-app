@@ -1,12 +1,14 @@
 
 import { useState } from "react";
 import { useCart } from "../context/CartContext.tsx";
+import { useNavigate } from "react-router-dom";
 
 function Mobnavbar() {
   const [showSearch, setshowSearch] = useState(false);
   const [showList, setshowList] = useState(false);
-
   const { cartQuantity, setShowCart } = useCart();
+
+  const navigate = useNavigate();
 
   return (
     <>
@@ -30,7 +32,7 @@ function Mobnavbar() {
             </svg>
           </span>
         </div>
-        <div className={`flex items-center justify-center ${showSearch ? 'hidden' : ''} `}>
+        <div onClick={()=>{navigate("/")}} className={` cursor-pointer flex items-center justify-center ${showSearch ? 'hidden' : ''} `}>
           <img className="h-7" src="/logo.png">
           </img>
         </div>
@@ -96,6 +98,11 @@ function Mobnavbar() {
             <li className="cursor-pointer">
               <span className="after:transition after:ease-in after:duration-200 relative z-10 after:top-4 hover:after:absolute hover:after:inline-block hover:after:bottom-0 hover:after:left-0 hover:after:w-full hover:after:h-[2px] hover:after:bg-black ">
                 DESIGNERS
+              </span>
+            </li>
+            <li className="cursor-pointer">
+              <span className="after:transition after:ease-in after:duration-200 relative z-10 after:top-4 hover:after:absolute hover:after:inline-block hover:after:bottom-0 hover:after:left-0 hover:after:w-full hover:after:h-[2px] hover:after:bg-black ">
+                My Account
               </span>
             </li>
           </ul>
