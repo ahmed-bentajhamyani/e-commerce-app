@@ -12,11 +12,11 @@ export function register(email: string, password: string) {
 }
 
 export function signOut() {
-    return signOut()
+    return auth.signOut()
 }
 
 export function getCurrentUser() {
-    return getCurrentUser()
+    return auth.currentUser
 }
 
 
