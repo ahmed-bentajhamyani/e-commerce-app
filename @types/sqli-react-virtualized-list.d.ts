@@ -1,0 +1,1 @@
+declare module 'sqli-react-virtualized-list';

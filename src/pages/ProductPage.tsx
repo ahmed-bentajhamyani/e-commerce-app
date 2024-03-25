@@ -8,9 +8,13 @@ import { useParams } from "react-router-dom";
 import { SwiperSlide } from "swiper/react";
 import SwiperBox from "../components/SwiperBox";
 import { useWishlistContext } from "@/context/WishlistContext";
+import { VirtualizedList } from 'sqli-react-virtualized-list';
 
 export default function ProductPage() {
   const { id } = useParams();
+  const containerHeight = '350px';
+  const containerWidth = '100%';
+  const columnWidth = 180;
   const [product, setProduct] = useState<Product>();
   const [relatedProducts, setRelatedProducts] = useState<Product[]>([]);
   const { increaseCartQuantity, setShowCart } = useCart();
@@ -38,6 +42,14 @@ export default function ProductPage() {
   const addToWishlist = () => {
     if (product?.id) addWishlistProduct(product);
   };
+
+  function renderProduct(relatedProduct: Product) {
+    return (
+      <SwiperSlide className="!w-[180px] !md:w-[250px]">
+        <ProductCard data={relatedProduct} />
+      </SwiperSlide>
+    );
+  }
 
   return (
     <section className="p-5 md:p-10 lg:py-5 lg:px-16">
@@ -117,15 +129,15 @@ export default function ProductPage() {
         </h2>
         <p className="font-extralight text-center">Complete your Outfit</p>
         <SwiperBox>
-          {relatedProducts
-            ?.filter((relatedProduct) => relatedProduct.id !== product?.id)
-            .map((relatedProduct, index) => {
-              return (
-                <SwiperSlide key={index} className="!w-[180px] !md:w-[250px]">
-                  <ProductCard data={relatedProduct} />
-                </SwiperSlide>
-              );
-            })}
+          <VirtualizedList<Product>
+            itemList={relatedProducts?.filter(relatedProduct => relatedProduct.id !== product?.id)}
+            scrollDirection={'horizontal'}
+            containerHeight={containerHeight}
+            containerWidth={containerWidth}
+            columnWidth={columnWidth}
+            hideScrollbar={true}
+            renderItem={renderProduct}
+          />
         </SwiperBox>
       </section>
     </section>
