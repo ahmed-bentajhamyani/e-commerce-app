@@ -1,15 +1,19 @@
 import { useEffect, useState } from "react";
 import { useCart } from "../context/CartContext.tsx";
 import { Link, useNavigate } from "react-router-dom";
+import { useWishlistContext } from "@/context/WishlistContext.tsx";
 import { getCurrentUser, signOut } from "@/services/authService.ts";
 import { PersonIcon } from "@radix-ui/react-icons";
 
 function Mobnavbar() {
+
+  const navigate = useNavigate();
+  const [ inputField, setinputField] = useState("");
   const [showSearch, setshowSearch] = useState(false);
   const [showList, setshowList] = useState(false);
   const [isFixed, setIsFixed] = useState(false);
 
-  const navigate = useNavigate();
+
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY >= 60) {
@@ -23,6 +27,7 @@ function Mobnavbar() {
   }, []);
 
   const { cartQuantity, setShowCart } = useCart();
+  const { wishlistProductsAmount } = useWishlistContext();
 
   return (
     <>
@@ -40,6 +45,11 @@ function Mobnavbar() {
           className={` ${showSearch ? "block" : "hidden"} w-full flex items-center justify-center`}
         >
           <input
+            onChange={(e)=>{setinputField(e.target.value)}}
+            onKeyDown={(e)=>{
+              if (e.key == "Enter")
+                navigate(`/search/${inputField}`)
+            }}
             className="w-[50%] h-full focus:outline-none text-lg"
             placeholder="SEARCH & HIT ENTER . . ."
           />
@@ -85,10 +95,10 @@ function Mobnavbar() {
               </svg>
             </li>
             <li
-              className={`transition-all duration-[0.25S]  pr-1 pl-1 h-full flex items-center justify-center transition ease-in duration-100 hover:bg-slate-100 cursor-pointer`}
+              className={`transition-all duration-[0.25S]  pr-1 pl-1 h-full flex items-center justify-center transition ease-in duration-100 hover:bg-slate-100 cursor-pointer`} onClick={() => navigate("/wishlist")}
             >
               <div className="absolute top-3 right-14 flex items-center justify-center h-4 w-4 bg-black rounded-full text-white">
-                <span className="text-xs">1</span>
+                <span className="text-xs">{wishlistProductsAmount}</span>
               </div>
               <svg
                 className="svg-icon"
@@ -133,7 +143,10 @@ function Mobnavbar() {
             className={` transition-all duration-[0.25S]  gap-2 flex flex-col h-full items-center justify-end text-sm`}
           >
             <li className="cursor-pointer">
-              <span className="after:transition after:ease-in after:duration-200 relative z-10 after:top-4 hover:after:absolute hover:after:inline-block hover:after:bottom-0 hover:after:left-0 hover:after:w-full hover:after:h-[2px] hover:after:bg-black ">
+              <span
+              onClick={() => navigate("/products/new")} 
+
+                className="after:transition after:ease-in after:duration-200 relative z-10 after:top-4 hover:after:absolute hover:after:inline-block hover:after:bottom-0 hover:after:left-0 hover:after:w-full hover:after:h-[2px] hover:after:bg-black ">
                 NEW IN
               </span>
             </li>
@@ -162,18 +175,17 @@ function Mobnavbar() {
               </span>
             </li>
             <li className="cursor-pointer">
-              <span className="after:transition after:ease-in after:duration-200 relative z-10 after:top-4 hover:after:absolute hover:after:inline-block hover:after:bottom-0 hover:after:left-0 hover:after:w-full hover:after:h-[2px] hover:after:bg-black ">
+              <span 
+
+                onClick={() => navigate("/products/bags")}
+                className="after:transition after:ease-in after:duration-200 relative z-10 after:top-4 hover:after:absolute hover:after:inline-block hover:after:bottom-0 hover:after:left-0 hover:after:w-full hover:after:h-[2px] hover:after:bg-black ">
                 BAGS
               </span>
             </li>
             <li className=" cursor-pointer text-red-500">
-              <span className="after:transition after:ease-in after:duration-200 relative z-10 after:top-4 hover:after:absolute hover:after:inline-block hover:after:bottom-0 hover:after:left-0 hover:after:w-full hover:after:h-[2px] hover:after:bg-black ">
-                Sale
-              </span>
-            </li>
-            <li className="cursor-pointer">
-              <span className="after:transition after:ease-in after:duration-200 relative z-10 after:top-4 hover:after:absolute hover:after:inline-block hover:after:bottom-0 hover:after:left-0 hover:after:w-full hover:after:h-[2px] hover:after:bg-black ">
-                DESIGNERS
+              <span onClick={() => navigate("/products/suits")} className="after:transition after:ease-in after:duration-200 relative z-10 after:top-4 hover:after:absolute hover:after:inline-block hover:after:bottom-0 hover:after:left-0 hover:after:w-full hover:after:h-[2px] hover:after:bg-black ">
+                SUITS
+
               </span>
             </li>
             <li>
