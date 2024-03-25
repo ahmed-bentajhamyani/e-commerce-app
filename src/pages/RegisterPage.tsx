@@ -9,6 +9,7 @@ import { register } from "@/services/authService";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/shadcn/ui/form";
 import { Input } from "@/components/shadcn/ui/input";
 import { Button } from "@/components/shadcn/ui/button";
+import { useNavigate } from "react-router-dom";
 
 const formSchema = z.object({
     displayName: z.string({ required_error: "This field is required" })
@@ -24,6 +25,8 @@ const formSchema = z.object({
     path: ["confirmPassword"],
 })
 export default function RegisterPage() {
+    const navigate = useNavigate()
+
     const form = useForm<z.infer<typeof formSchema>>(
         {
             resolver: zodResolver(formSchema),
@@ -34,7 +37,7 @@ export default function RegisterPage() {
             updateProfile(userCredential.user, {
                 displayName: values.displayName,
             })
-            console.log(userCredential.user);
+            navigate("/")
         }).catch((err: FirebaseError) => {
             switch (err.code) {
                 case 'auth/invalid-credential':
@@ -72,7 +75,13 @@ export default function RegisterPage() {
                                 <FormItem>
                                     <FormLabel>NAME:</FormLabel>
                                     <FormControl onBlur={field.onBlur}>
-                                        <Input {...field} />
+                                        <Input onChange={field.onChange}
+                                            onBlur={field.onBlur}
+                                            value={field.value}
+                                            disabled={field.disabled}
+                                            name={field.name}
+                                            ref={field.ref}
+                                            className="rounded-none" required />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -85,7 +94,13 @@ export default function RegisterPage() {
                                 <FormItem>
                                     <FormLabel>EMAIL:</FormLabel>
                                     <FormControl onBlur={field.onBlur}>
-                                        <Input {...field} />
+                                        <Input onChange={field.onChange}
+                                            onBlur={field.onBlur}
+                                            value={field.value}
+                                            disabled={field.disabled}
+                                            name={field.name}
+                                            ref={field.ref}
+                                            className="rounded-none" required />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -98,7 +113,13 @@ export default function RegisterPage() {
                                 <FormItem>
                                     <FormLabel>PASSWORD:</FormLabel>
                                     <FormControl>
-                                        <Input {...field} />
+                                        <Input onChange={field.onChange}
+                                            onBlur={field.onBlur}
+                                            value={field.value}
+                                            disabled={field.disabled}
+                                            name={field.name}
+                                            ref={field.ref}
+                                            className="rounded-none" required />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -111,7 +132,13 @@ export default function RegisterPage() {
                                 <FormItem>
                                     <FormLabel>CONFIRM PASSWORD:</FormLabel>
                                     <FormControl>
-                                        <Input {...field} />
+                                        <Input onChange={field.onChange}
+                                            onBlur={field.onBlur}
+                                            value={field.value}
+                                            disabled={field.disabled}
+                                            name={field.name}
+                                            ref={field.ref}
+                                            className="rounded-none" required />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
