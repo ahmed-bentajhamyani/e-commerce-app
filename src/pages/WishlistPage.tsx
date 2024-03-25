@@ -1,5 +1,6 @@
-import WishlistRow from "@/components/WishlistRow";
-import { useWishlistContext } from "@/context/WishlistContext";
+import WishlistRow from "../components/WishlistRow"
+import { useWishlistContext } from "../context/WishlistContext"
+
 
 
 export default function WishListPage() {

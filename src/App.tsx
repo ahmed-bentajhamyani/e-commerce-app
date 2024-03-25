@@ -1,7 +1,7 @@
 
-import WishListPage from "@/pages/WishlistPage"
 import { WishlistProvider } from "./context/WishlistContext"
 import { useEffect } from "react"
+import WishListPage from "./pages/WishlistPage"
 
 function App() {
   useEffect(() => {

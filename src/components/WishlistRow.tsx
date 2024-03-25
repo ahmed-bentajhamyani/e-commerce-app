@@ -1,5 +1,6 @@
-import { Button } from "@/components/shadcn/ui/button";
-import { WishlistItem } from "@/context/WishlistContext";
+import { WishlistItem } from "../context/WishlistContext";
+import { Button } from "./shadcn/ui/button";
+
 
 interface WishlistRowProps {
     wishlistItem: WishlistItem
