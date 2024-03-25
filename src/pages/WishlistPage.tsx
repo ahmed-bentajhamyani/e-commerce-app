@@ -2,7 +2,7 @@ import WishlistRow from "../components/WishlistRow"
 import { useWishlistContext } from "../context/WishlistContext"
 
 export default function WishListPage() {
-    const { wishlistProducts, removeWishlistProduct } = useWishlistContext()
+    const { wishlistProducts, removeWishlistProductById } = useWishlistContext()
     return (
         <main className="flex min-h-full flex-col items-center justify-center">
             <section className="w-full flex flex-col items-center p-2 gap-10 md:p-8">
@@ -23,7 +23,7 @@ export default function WishListPage() {
                                 <tbody>
                                     {
                                         wishlistProducts.map((wishlistProduct, index) =>
-                                            <WishlistRow key={index} wishlistProduct={wishlistProduct} callbackFn={() => removeWishlistProduct(index)} />)
+                                            <WishlistRow key={index} wishlistProduct={wishlistProduct} callbackFn={() => removeWishlistProductById(wishlistProduct.id)} />)
                                     }
                                 </tbody>
                             </table>

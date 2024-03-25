@@ -5,7 +5,8 @@ import { createContext, useContext, useEffect, useState } from "react"
 interface WishlistContextType {
     wishlistProducts: Product[]
     addWishlistProduct: (WishlistProduct: Product) => void
-    removeWishlistProduct: (index: number) => void
+    removeWishlistProductById: (productId: number) => void
+    isProductInWishlist: (productId: number) => boolean
     clearwishlistProducts: () => void
     wishlistProductsAmount: number
 }
@@ -13,7 +14,8 @@ interface WishlistContextType {
 const WishlistContext = createContext<WishlistContextType>({
     wishlistProducts: [],
     addWishlistProduct: () => { },
-    removeWishlistProduct: () => { },
+    removeWishlistProductById: () => { },
+    isProductInWishlist: () => false,
     clearwishlistProducts: () => { },
     wishlistProductsAmount: 0
 })
@@ -29,11 +31,16 @@ export function WishlistProvider({ children }: { children: React.ReactNode }) {
 
     const wishlistItemsAmount = wishlistProducts.length;
 
+    const isProductInWishlist = (productId: number) => {
+        return wishlistProducts.some((product) => product.id === productId);
+    }
+
     const addWishlistProduct = (wishlistProduct: Product) => {
+        if (wishlistProducts.some((product) => product.id === wishlistProduct.id)) return;
         setwishlistProducts([...wishlistProducts, wishlistProduct])
     }
-    const removeWishlistProduct = (index: number) => {
-        setwishlistProducts(wishlistProducts.filter((_, i) => i !== index))
+    const removeWishlistProductById = (productId: number) => {
+        setwishlistProducts(wishlistProducts.filter((product) => product.id !== productId))
     }
     const clearwishlistProducts = () => {
         setwishlistProducts([])
@@ -48,7 +55,8 @@ export function WishlistProvider({ children }: { children: React.ReactNode }) {
                 {
                     wishlistProducts: wishlistProducts,
                     addWishlistProduct: addWishlistProduct,
-                    removeWishlistProduct: removeWishlistProduct,
+                    removeWishlistProductById: removeWishlistProductById,
+                    isProductInWishlist: isProductInWishlist,
                     clearwishlistProducts: clearwishlistProducts,
                     wishlistProductsAmount: wishlistItemsAmount,
                 }

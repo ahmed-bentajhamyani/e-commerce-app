@@ -1,7 +1,10 @@
+import { useNavigate } from "react-router-dom"
+
 function Logo(){
 
+  const navigate = useNavigate();
     return (
-        <div className="h-24 flex items-center justify-center">
+        <div onClick={()=>{navigate("/")}} className="h-24 flex items-center justify-center cursor-pointer">
           <img className="h-9" src="/logo.png">
             </img>
         </div>

@@ -7,12 +7,14 @@ import ProductCard from "../components/ProductCard";
 import { useParams } from "react-router-dom";
 import { SwiperSlide } from "swiper/react";
 import SwiperBox from "../components/SwiperBox";
+import { useWishlistContext } from "@/context/WishlistContext";
 
 export default function ProductPage() {
   const { id } = useParams();
   const [product, setProduct] = useState<Product>();
   const [relatedProducts, setRelatedProducts] = useState<Product[]>([]);
   const { increaseCartQuantity, setShowCart } = useCart();
+  const { addWishlistProduct } = useWishlistContext();
 
   useEffect(() => {
     if (id)
@@ -31,6 +33,10 @@ export default function ProductPage() {
       increaseCartQuantity(product.id);
       setShowCart(true);
     }
+  };
+
+  const addToWishlist = () => {
+    if (product?.id) addWishlistProduct(product);
   };
 
   return (
@@ -81,7 +87,7 @@ export default function ProductPage() {
               }
             />
             <Button
-              // action={addToCart}
+              action={addToWishlist}
               style="flex justify-center items-center w-full px-10 py-3 mt-6 space-x-1 text-sm md:text-base bg-bg-secondary rounded-none hover:bg-text-secondary/60 cursor-pointer whitespace-nowrap disabled:opacity-70 disabled:cursor-default"
               text="Add to wishlist"
               icon={

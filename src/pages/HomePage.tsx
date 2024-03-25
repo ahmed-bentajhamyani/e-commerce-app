@@ -4,6 +4,7 @@ import ProductService from "../services/ProductService";
 import SwiperBox from "../components/SwiperBox";
 import { SwiperSlide } from "swiper/react";
 import ProductCard from "../components/ProductCard";
+import { useNavigate } from "react-router-dom";
 
 function HomePage() {
   const [accessoriesProducts, setAccessoriesProducts] = useState<Product[]>([]);
@@ -15,10 +16,12 @@ function HomePage() {
     ProductService.getProductsByCategory(9).then((res) => setShoeProducts(res));
   }, []);
 
+  const navigate = useNavigate();
+
   return (
     <>
       <section className="flex justify-center">
-        <img className="max-w-[88%]" src="/topImage.jpg"></img>
+        <img className="max-w-[88%]" src="/topImage.jpg" ></img>
       </section>
       <h2 className="text-center capitalize mt-12 mb-12 font-playfair-display font-extrabold text-[1.8em]">
         Stylish accessories
@@ -34,17 +37,17 @@ function HomePage() {
         </SwiperBox>
       ) : null}
 
-      <section className=" ml-auto mr-auto mb-10 flex justify-between w-[85%] gap-8">
+      <section className=" ml-auto mr-auto mb-10 flex flex-col lg:flex-row justify-between w-[85%] gap-8">
         <div className="flex flex-col gap-8">
           <img src="/left.jpg"></img>
           <div className="flex justify-center items-center flex-col">
             <p className=" text-[13px] font-[300] text-gray-800">
               ISABEL MARANT
             </p>
-            <h2 className="text-center font-playfair-display font-[900] text-[1.5em]">
+            <h2 className=" text-center font-playfair-display font-[900] text-[1.5em]">
               Take a look at New Arrivals
             </h2>
-            <p className=" font-bold text-[13px] hover:border-b-2 border-black pb-[10px]">
+            <p onClick={()=>navigate("/products/clothing")} className=" cursor-pointer font-bold text-[13px] hover:border-b-2 border-black pb-[10px]">
               SHOP NOW
             </p>
           </div>
@@ -56,14 +59,14 @@ function HomePage() {
             <h2 className="text-center font-playfair-display font-[900] text-[1.5em]">
               Spring’s Trendiest Garments
             </h2>
-            <p className="font-bold text-[13px] hover:border-b-2 border-black pb-[10px]">
+            <p onClick={()=>navigate("/products/bag")} className=" cursor-pointerfont-bold text-[13px] hover:border-b-2 border-black pb-[10px]">
               DISCOVER THE SELECTION
             </p>
           </div>
         </div>
       </section>
 
-      <section className="ml-auto mr-auto flex justify-center mb-10">
+      <section className="hidden lg:flex ml-auto mr-auto justify-center mb-10">
         <img className="h-[100px] w-[70%]" src="/off.png"></img>
       </section>
 
@@ -81,7 +84,7 @@ function HomePage() {
         </SwiperBox>
       ) : null}
 
-      <section className=" ml-auto mr-auto mb-10 flex justify-between w-[85%] gap-5">
+      <section className=" flex-col lg:flex-row ml-auto mr-auto mb-10 flex justify-between w-[85%] gap-5">
         <div className="flex flex-col gap-8">
           <img src="/first.jpg"></img>
           <div className="flex justify-center items-center flex-col">
@@ -89,7 +92,7 @@ function HomePage() {
             <h2 className="text-center font-playfair-display font-[900] text-[1.5em]">
               Focus On: Bags
             </h2>
-            <p className=" font-bold text-[13px] hover:border-b-2 border-black pb-[10px]">
+            <p onClick={()=>navigate("/products/clothing")} className="cursor-pointer  font-bold text-[13px] hover:border-b-2 border-black pb-[10px]">
               SHOP NOW
             </p>
           </div>
@@ -101,7 +104,7 @@ function HomePage() {
             <h2 className="text-center font-playfair-display font-[900] text-[1.5em]">
               Spring Vibes
             </h2>
-            <p className="font-bold text-[13px] hover:border-b-2 border-black pb-[10px]">
+            <p onClick={()=>navigate("/products/bags")} className="cursor-pointer font-bold text-[13px] hover:border-b-2 border-black pb-[10px]">
               SHOP NOW
             </p>
           </div>
@@ -115,7 +118,7 @@ function HomePage() {
             <h2 className="text-center font-playfair-display font-[900] text-[1.5em]">
               Undisputed Must-Haves
             </h2>
-            <p className="pb-[10px] font-bold text-[13px] hover:border-b-2 border-black ">
+            <p onClick={()=>navigate("/products/bags")} className="cursor-pointer pb-[10px] font-bold text-[13px] hover:border-b-2 border-black ">
               SHOP NOW
             </p>
           </div>
