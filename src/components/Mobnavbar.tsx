@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useCart } from "../context/CartContext.tsx";
 import { useNavigate } from "react-router-dom";
+import { useWishlistContext } from "@/context/WishlistContext.tsx";
 
 function Mobnavbar() {
 
@@ -24,6 +25,7 @@ function Mobnavbar() {
   }, []);
 
   const { cartQuantity, setShowCart } = useCart();
+  const { wishlistProductsAmount } = useWishlistContext();
 
   return (
     <>
@@ -65,7 +67,8 @@ function Mobnavbar() {
             </svg>
           </span>
         </div>
-        <div onClick={()=>{navigate("/")}} className={` cursor-pointer flex items-center justify-center ${showSearch ? 'hidden' : ''} `}>
+
+        <div onClick={() => { navigate("/") }} className={` cursor-pointer flex items-center justify-center ${showSearch ? 'hidden' : ''} `}>
           <img className="h-7" src="/logo.png">
           </img>
         </div>
@@ -91,10 +94,10 @@ function Mobnavbar() {
               </svg>
             </li>
             <li
-              className={`transition-all duration-[0.25S]  pr-1 pl-1 h-full flex items-center justify-center transition ease-in duration-100 hover:bg-slate-100 cursor-pointer`}
+              className={`transition-all duration-[0.25S]  pr-1 pl-1 h-full flex items-center justify-center transition ease-in duration-100 hover:bg-slate-100 cursor-pointer`} onClick={() => navigate("/wishlist")}
             >
               <div className="absolute top-3 right-14 flex items-center justify-center h-4 w-4 bg-black rounded-full text-white">
-                <span className="text-xs">1</span>
+                <span className="text-xs">{wishlistProductsAmount}</span>
               </div>
               <svg
                 className="svg-icon"
@@ -141,6 +144,7 @@ function Mobnavbar() {
             <li className="cursor-pointer">
               <span
               onClick={() => navigate("/products/new")} 
+
                 className="after:transition after:ease-in after:duration-200 relative z-10 after:top-4 hover:after:absolute hover:after:inline-block hover:after:bottom-0 hover:after:left-0 hover:after:w-full hover:after:h-[2px] hover:after:bg-black ">
                 NEW IN
               </span>
@@ -171,6 +175,7 @@ function Mobnavbar() {
             </li>
             <li className="cursor-pointer">
               <span 
+
                 onClick={() => navigate("/products/bags")}
                 className="after:transition after:ease-in after:duration-200 relative z-10 after:top-4 hover:after:absolute hover:after:inline-block hover:after:bottom-0 hover:after:left-0 hover:after:w-full hover:after:h-[2px] hover:after:bg-black ">
                 BAGS
@@ -179,6 +184,7 @@ function Mobnavbar() {
             <li className=" cursor-pointer text-red-500">
               <span onClick={() => navigate("/products/suits")} className="after:transition after:ease-in after:duration-200 relative z-10 after:top-4 hover:after:absolute hover:after:inline-block hover:after:bottom-0 hover:after:left-0 hover:after:w-full hover:after:h-[2px] hover:after:bg-black ">
                 SUITS
+
               </span>
             </li>
             <li className="cursor-pointer">
@@ -186,6 +192,16 @@ function Mobnavbar() {
                 onClick={() => navigate("/products/designers")}
                 className="after:transition after:ease-in after:duration-200 relative z-10 after:top-4 hover:after:absolute hover:after:inline-block hover:after:bottom-0 hover:after:left-0 hover:after:w-full hover:after:h-[2px] hover:after:bg-black ">
                 DESIGNERS
+              </span>
+            </li>
+            <li className="cursor-pointer">
+              <span className="after:transition after:ease-in after:duration-200 relative z-10 after:top-4 hover:after:absolute hover:after:inline-block hover:after:bottom-0 hover:after:left-0 hover:after:w-full hover:after:h-[2px] hover:after:bg-black ">
+                My Account
+              </span>
+            </li>
+            <li className="cursor-pointer">
+              <span className="after:transition after:ease-in after:duration-200 relative z-10 after:top-4 hover:after:absolute hover:after:inline-block hover:after:bottom-0 hover:after:left-0 hover:after:w-full hover:after:h-[2px] hover:after:bg-black ">
+                My Account
               </span>
             </li>
             <li className="cursor-pointer">

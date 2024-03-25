@@ -1,7 +1,8 @@
 import { HeartFilledIcon, HeartIcon } from "@radix-ui/react-icons";
-import { memo, useEffect, useState } from "react";
+import { memo, useState } from "react";
 import { Product } from "../types/Product";
 import { useNavigate } from "react-router-dom";
+import { useWishlistContext } from "@/context/WishlistContext";
 
 export interface IProductCard {
   style?: string;
@@ -9,30 +10,17 @@ export interface IProductCard {
 }
 
 export default memo(function ProductCard({ style, data }: IProductCard) {
-  const [isWished, setIsWished] = useState(false);
+  const { isProductInWishlist, addWishlistProduct, removeWishlistProductById } = useWishlistContext();
+  const [isWished, setIsWished] = useState(isProductInWishlist(data.id));
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const values = localStorage.getItem("wishedItems");
-    const parsedValues = values ? (JSON.parse(values) as number[]) : [];
-    if (parsedValues.includes(data.id)) setIsWished(true);
-  }, []);
-
   const toggleWished = () => {
-    const values = localStorage.getItem("wishedItems");
-    const parsedValues = values ? (JSON.parse(values) as number[]) : [];
-    if (parsedValues.includes(data.id)) {
-      localStorage.setItem(
-        "wishedItems",
-        JSON.stringify(parsedValues.filter((item) => item !== data.id))
-      );
+    if (isWished) {
+      removeWishlistProductById(data.id);
       setIsWished(false);
-    } else {
-      localStorage.setItem(
-        "wishedItems",
-        JSON.stringify([...parsedValues, data.id])
-      );
-      setIsWished(true);
+    }
+    else {
+      addWishlistProduct(data);
+      setIsWished(true)
     }
   };
 
@@ -65,7 +53,12 @@ export default memo(function ProductCard({ style, data }: IProductCard) {
           {data.product_name}
         </h2>
         <p className="uppercase font-light  ">{data?.description}</p>
-        <p className="font-semibold">{data?.price} $</p>
+        <p className="font-semibold">
+          {Intl.NumberFormat("en-US", {
+            style: "currency",
+            currency: "EUR",
+          }).format(data.price)}
+        </p>
       </div>
     </article>
   );

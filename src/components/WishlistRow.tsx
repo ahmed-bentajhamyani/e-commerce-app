@@ -1,6 +1,7 @@
 import { Product } from "@/types/Product";
 import { Button } from "./shadcn/ui/button";
 import { useCart } from "@/context/CartContext";
+import { Cross2Icon } from "@radix-ui/react-icons";
 
 
 interface WishlistRowProps {
@@ -43,8 +44,8 @@ export default function WishlistRow({ wishlistProduct, callbackFn }: WishlistRow
         </td>
         <td>
             <div className="flex flex-col items-center justify-center gap-2">
-                <Button className="w-[50%] uppercase bg-bg-secondary text-[#333] hover:bg-secondary hover:text-white" onClick={callbackFn}>Delete</Button>
-                <Button className="w-[50%] uppercase" onClick={addToCart}>Add to shopping bag</Button>
+                <Button className="w-[50%] uppercase bg-bg-secondary text-[#333] hover:bg-secondary hover:text-white gap-2" onClick={callbackFn}><Cross2Icon /> Delete</Button>
+                <Button className="w-[50%] uppercase" onClick={addToCart}> Add to shopping bag</Button>
             </div>
         </td>
     </tr>
