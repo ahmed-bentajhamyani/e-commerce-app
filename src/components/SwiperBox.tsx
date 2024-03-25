@@ -19,7 +19,7 @@ export default function SwiperBox({ children }: { children: ReactNode }) {
       speed={1000}
       slidesPerView="auto"
       freeMode={true}
-      className="mySwiper"
+      className="mySwiper mb-6"
       spaceBetween={20}
     >
       {children}

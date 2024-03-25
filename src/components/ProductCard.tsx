@@ -55,7 +55,7 @@ export default memo(function ProductCard({ style, data }: IProductCard) {
           )}
         </button>
       </div>
-      <div className="flex flex-col xs:text-sm text-xs transition-all md:text-base text-center">
+      <div className="flex flex-col sm:text-sm text-xs transition-all text-center">
         <h2 className="font-black uppercase font-playfair-display">
           {data.product_name}
         </h2>
