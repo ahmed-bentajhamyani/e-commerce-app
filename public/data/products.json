@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "image": "733604.jpeg",
+    "image": "https://images.eleonorabonucci.com/photo/282844/733604/900/1200?text=733604",
     "product_name": "MANEBI",
     "description": "LINEN ESPADRILLES",
     "style_id": "R4.5K0_SUEDEBLUESUGAR",
@@ -12,7 +12,7 @@
   },
   {
     "id": 2,
-    "image": "965540.jpeg",
+    "image": "https://images.eleonorabonucci.com/photo/313835/965540/900/1200?text=965540",
     "product_name": "MANEBI",
     "description": "SUEDE BOAT MOCCASIN",
     "style_id": "R4.5K0_SUEDEBROWNSUGAR",
@@ -23,7 +23,7 @@
   },
   {
     "id": 3,
-    "image": "964554.jpeg",
+    "image": "https://images.eleonorabonucci.com/photo/319103/964554/900/1200?text=964554",
     "product_name": "MANEBI",
     "description": "ESPADRILLE IN SUEDE",
     "style_id": "R5.0C0_SUEDECARBONGREYONTONE",
@@ -34,7 +34,7 @@
   },
   {
     "id": 4,
-    "image": "313018.jpeg",
+    "image": "https://images.eleonorabonucci.com/photo/313018/964390/900/1200?text=964390",
     "product_name": "FERRAGAMO",
     "description": "MOCCASIN ORNAMENT GANCINI",
     "style_id": "768074_020350061",
@@ -45,7 +45,7 @@
   },
   {
     "id": 5,
-    "image": "826194.jpeg",
+    "image": "https://images.eleonorabonucci.com/photo/293326/826194/900/1200?text=826194",
     "product_name": "FERRAGAMO",
     "description": "GANCINI LEATHER LOAFER",
     "style_id": "713330_02B796NERO/LIGHTGREY",
@@ -56,7 +56,7 @@
   },
   {
     "id": 6,
-    "image": "826194.jpeg",
+    "image": "https://images.eleonorabonucci.com/photo/319983/962508/900/1200?text=962508",
     "product_name": "FERRAGAMO",
     "description": "MOCCASIN HOOKS UP",
     "style_id": "762690_021606COCOA",
@@ -67,7 +67,7 @@
   },
   {
     "id": 7,
-    "image": "963650.jpeg",
+    "image": "https://images.eleonorabonucci.com/photo/316766/963650/900/1200?text=963650",
     "product_name": "WOOLRICH",
     "description": "RUBBER SLIDE SANDAL WITH LOGO",
     "style_id": "WFM241_0801500",
@@ -78,7 +78,7 @@
   },
   {
     "id": 8,
-    "image": "965471.jpeg",
+    "image": "https://images.eleonorabonucci.com/photo/313304/965471/900/1200?text=965471",
     "product_name": "MSGM",
     "description": "LEATHER SNEAKER WITH LOGO",
     "style_id": "3640MS506_85699",
@@ -89,7 +89,7 @@
   },
   {
     "id": 9,
-    "image": "963317.jpeg",
+    "image": "https://images.eleonorabonucci.com/photo/323619/963317/900/1200?text=963317",
     "product_name": "MONCLER",
     "description": "MONCLUB SNEAKER",
     "style_id": "4M00210_M429520F",
@@ -100,7 +100,7 @@
   },
   {
     "id": 10,
-    "image": "962589.jpeg",
+    "image": "https://images.eleonorabonucci.com/photo/326855/962589/900/1200?text=962589",
     "product_name": "FERRAGAMO",
     "description": "MOCCASIN WITH GANCINI ORNAMENT",
     "style_id": "768041_020983026",
@@ -111,7 +111,7 @@
   },
   {
     "id": 11,
-    "image": "964576.jpeg",
+    "image": "https://images.eleonorabonucci.com/photo/321842/964576/900/1200?text=964576",
     "product_name": "MONCLER",
     "description": "SNEAKER MONCLUB",
     "style_id": "4M00210_M4295754",
@@ -122,7 +122,7 @@
   },
   {
     "id": 12,
-    "image": "958471.jpeg",
+    "image": "https://images.eleonorabonucci.com/photo/318560/958471/900/1200?text=958471",
     "product_name": "COMMON PROJECTS",
     "description": "SUEDE LEATHER SNEAKER",
     "style_id": "2411_3099",
@@ -133,7 +133,7 @@
   },
   {
     "id": 13,
-    "image": "960632.jpeg",
+    "image": "https://images.eleonorabonucci.com/photo/324820/960632/900/1200?text=960632",
     "product_name": "PARABOOT",
     "description": "CHIMEY LEATHER LOAFER",
     "style_id": "200816_EBONY",
@@ -144,13 +144,13 @@
   },
   {
     "id": 14,
-    "image": "957570.jpeg",
+    "image": "https://images.eleonorabonucci.com/photo/325375/957628/900/1200?text=957628",
     "product_name": "PARABOOT",
     "description": "LEATHER MICHAEL SHOE",
     "style_id": "715634_MARRON",
     "price": 350.0,
     "quantity": 20,
-    "color": "BROWN",
+    "color": "BLACK",
     "category_id": 9
   },
   {
