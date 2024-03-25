@@ -33,7 +33,7 @@ function Navbar() {
       </section>
 
       <nav
-        className={`hidden lg:flex transition-all duration-[0.25S] ${isFixed ? " h-14 top-0 pr-[47px] fixed w-full bg-white shadow-sm justify-between" : "h-20 mb-9 pr-[50px]"} flex justify-end`}
+        className={`z-10 hidden lg:flex transition-all duration-[0.25S] ${isFixed ? " h-14 top-0 pr-[47px] fixed w-full bg-white shadow-sm justify-between" : "h-20 pr-[50px]"} flex justify-end`}
       >
         <img
           className={`${isFixed ? "" : "hidden"} mt-4 ml-6 h-6`}

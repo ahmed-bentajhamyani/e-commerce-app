@@ -49,7 +49,7 @@ export default function ProductsPage() {
             "GREEN",
             "GREY",
             "IVORY",
-            "MULTICOLOUR",
+            "MULTICOLOR",
             "ORANGE",
             "PINK",
             "PURPLE",
@@ -60,7 +60,7 @@ export default function ProductsPage() {
           onColorChange={(value) => setColor(value)}
         />
       </div>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 my-8">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mb-8">
         {_products.length > 0
           ? _products.map((item) => (
               <ProductCard key={item.id} data={item} style="max-w-[260px]" />
