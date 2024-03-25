@@ -10,17 +10,19 @@ export default function ProductsPage() {
   const [categoryId, setCategoryId] = useState(9);
   const [products, setProducts] = useState<Product[]>([]);
   const [color, setColor] = useState("ALL");
+  useEffect(() => {
+    ProductService.getCategoryByName(params.category?.toUpperCase() || "").then(
+      (res) => {
+        setCategoryId(res.id);
+      }
+    );
+  }, [params]);
 
   useEffect(() => {
-    ProductService.getCategoryByName(
-      params.category?.toUpperCase() || "FOOTWEAR"
-    ).then((res) => setCategoryId(res));
     ProductService.getProductsByCategory(categoryId).then((res) =>
       setProducts(res)
     );
-
-    return () => {};
-  }, []);
+  }, [categoryId]);
 
   const _products = useMemo(() => {
     return color === "ALL"

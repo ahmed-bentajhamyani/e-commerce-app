@@ -4,11 +4,13 @@ import Topbar from "./Topbar.tsx";
 import Logo from "./Logo.tsx";
 import { useCart } from "../context/CartContext.tsx";
 import Mobnavbar from "./Mobnavbar.tsx";
+import { useNavigate } from "react-router-dom";
 
 function Navbar() {
   const [isFixed, setIsFixed] = useState(false);
   const [showSearch, setshowSearch] = useState(false);
 
+  const navigate = useNavigate();
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY >= 140) {
@@ -69,22 +71,34 @@ function Navbar() {
               </span>
             </li>
             <li className="cursor-pointer">
-              <span className="after:transition after:ease-in after:duration-200 relative z-10 after:top-7 hover:after:absolute hover:after:inline-block hover:after:bottom-0 hover:after:left-0 hover:after:w-full hover:after:h-[2px] hover:after:bg-black ">
+              <span
+                onClick={() => navigate("/products/clothing")}
+                className="after:transition after:ease-in after:duration-200 relative z-10 after:top-7 hover:after:absolute hover:after:inline-block hover:after:bottom-0 hover:after:left-0 hover:after:w-full hover:after:h-[2px] hover:after:bg-black "
+              >
                 CLOTHING
               </span>
             </li>
             <li className="cursor-pointer">
-              <span className="after:transition after:ease-in after:duration-200 relative z-10 after:top-7 hover:after:absolute hover:after:inline-block hover:after:bottom-0 hover:after:left-0 hover:after:w-full hover:after:h-[2px] hover:after:bg-black ">
+              <span
+                onClick={() => navigate("/products/footwear")}
+                className="after:transition after:ease-in after:duration-200 relative z-10 after:top-7 hover:after:absolute hover:after:inline-block hover:after:bottom-0 hover:after:left-0 hover:after:w-full hover:after:h-[2px] hover:after:bg-black "
+              >
                 FOOTWEAR
               </span>
             </li>
             <li className="cursor-pointer">
-              <span className="after:transition after:ease-in after:duration-200 relative z-10 after:top-7 hover:after:absolute hover:after:inline-block hover:after:bottom-0 hover:after:left-0 hover:after:w-full hover:after:h-[2px] hover:after:bg-black ">
+              <span
+                onClick={() => navigate("/products/accessories")}
+                className="after:transition after:ease-in after:duration-200 relative z-10 after:top-7 hover:after:absolute hover:after:inline-block hover:after:bottom-0 hover:after:left-0 hover:after:w-full hover:after:h-[2px] hover:after:bg-black "
+              >
                 ACCESSORIES
               </span>
             </li>
             <li className="cursor-pointer">
-              <span className="after:transition after:ease-in after:duration-200 relative z-10 after:top-7 hover:after:absolute hover:after:inline-block hover:after:bottom-0 hover:after:left-0 hover:after:w-full hover:after:h-[2px] hover:after:bg-black ">
+              <span
+                onClick={() => navigate("/products/bags")}
+                className="after:transition after:ease-in after:duration-200 relative z-10 after:top-7 hover:after:absolute hover:after:inline-block hover:after:bottom-0 hover:after:left-0 hover:after:w-full hover:after:h-[2px] hover:after:bg-black "
+              >
                 BAGS
               </span>
             </li>
