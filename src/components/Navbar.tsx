@@ -10,6 +10,7 @@ import { useWishlistContext } from "@/context/WishlistContext.tsx";
 function Navbar() {
   const [isFixed, setIsFixed] = useState(false);
   const [showSearch, setshowSearch] = useState(false);
+  const [inputField, setinputField ] = useState("");
 
   const navigate = useNavigate();
   useEffect(() => {
@@ -44,6 +45,11 @@ function Navbar() {
           className={` ${showSearch ? "block" : "hidden"} w-full flex items-center justify-center`}
         >
           <input
+            onChange={(e)=>{setinputField(e.target.value)}}
+            onKeyDown={(e)=>{
+              if (e.key == "Enter")
+                navigate(`/search/${inputField}`)
+            }}
             className="w-[50%] h-full focus:outline-none text-xl"
             placeholder="SEARCH & HIT ENTER . . ."
           />

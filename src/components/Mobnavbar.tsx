@@ -4,11 +4,14 @@ import { useNavigate } from "react-router-dom";
 import { useWishlistContext } from "@/context/WishlistContext.tsx";
 
 function Mobnavbar() {
+
+  const navigate = useNavigate();
+  const [ inputField, setinputField] = useState("");
   const [showSearch, setshowSearch] = useState(false);
   const [showList, setshowList] = useState(false);
   const [isFixed, setIsFixed] = useState(false);
 
-  const navigate = useNavigate();
+
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY >= 60) {
@@ -40,6 +43,11 @@ function Mobnavbar() {
           className={` ${showSearch ? "block" : "hidden"} w-full flex items-center justify-center`}
         >
           <input
+            onChange={(e)=>{setinputField(e.target.value)}}
+            onKeyDown={(e)=>{
+              if (e.key == "Enter")
+                navigate(`/search/${inputField}`)
+            }}
             className="w-[50%] h-full focus:outline-none text-lg"
             placeholder="SEARCH & HIT ENTER . . ."
           />
@@ -59,6 +67,7 @@ function Mobnavbar() {
             </svg>
           </span>
         </div>
+
         <div onClick={() => { navigate("/") }} className={` cursor-pointer flex items-center justify-center ${showSearch ? 'hidden' : ''} `}>
           <img className="h-7" src="/logo.png">
           </img>
@@ -134,7 +143,8 @@ function Mobnavbar() {
           >
             <li className="cursor-pointer">
               <span
-                onClick={() => navigate("/products/new")}
+              onClick={() => navigate("/products/new")} 
+
                 className="after:transition after:ease-in after:duration-200 relative z-10 after:top-4 hover:after:absolute hover:after:inline-block hover:after:bottom-0 hover:after:left-0 hover:after:w-full hover:after:h-[2px] hover:after:bg-black ">
                 NEW IN
               </span>
@@ -164,7 +174,8 @@ function Mobnavbar() {
               </span>
             </li>
             <li className="cursor-pointer">
-              <span
+              <span 
+
                 onClick={() => navigate("/products/bags")}
                 className="after:transition after:ease-in after:duration-200 relative z-10 after:top-4 hover:after:absolute hover:after:inline-block hover:after:bottom-0 hover:after:left-0 hover:after:w-full hover:after:h-[2px] hover:after:bg-black ">
                 BAGS
@@ -173,6 +184,7 @@ function Mobnavbar() {
             <li className=" cursor-pointer text-red-500">
               <span onClick={() => navigate("/products/suits")} className="after:transition after:ease-in after:duration-200 relative z-10 after:top-4 hover:after:absolute hover:after:inline-block hover:after:bottom-0 hover:after:left-0 hover:after:w-full hover:after:h-[2px] hover:after:bg-black ">
                 SUITS
+
               </span>
             </li>
             <li className="cursor-pointer">
@@ -180,6 +192,11 @@ function Mobnavbar() {
                 onClick={() => navigate("/products/designers")}
                 className="after:transition after:ease-in after:duration-200 relative z-10 after:top-4 hover:after:absolute hover:after:inline-block hover:after:bottom-0 hover:after:left-0 hover:after:w-full hover:after:h-[2px] hover:after:bg-black ">
                 DESIGNERS
+              </span>
+            </li>
+            <li className="cursor-pointer">
+              <span className="after:transition after:ease-in after:duration-200 relative z-10 after:top-4 hover:after:absolute hover:after:inline-block hover:after:bottom-0 hover:after:left-0 hover:after:w-full hover:after:h-[2px] hover:after:bg-black ">
+                My Account
               </span>
             </li>
             <li className="cursor-pointer">
