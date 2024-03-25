@@ -188,13 +188,6 @@ function Mobnavbar() {
               </span>
             </li>
             <li className="cursor-pointer">
-              <span
-                onClick={() => navigate("/products/designers")}
-                className="after:transition after:ease-in after:duration-200 relative z-10 after:top-4 hover:after:absolute hover:after:inline-block hover:after:bottom-0 hover:after:left-0 hover:after:w-full hover:after:h-[2px] hover:after:bg-black ">
-                DESIGNERS
-              </span>
-            </li>
-            <li className="cursor-pointer">
               <span className="after:transition after:ease-in after:duration-200 relative z-10 after:top-4 hover:after:absolute hover:after:inline-block hover:after:bottom-0 hover:after:left-0 hover:after:w-full hover:after:h-[2px] hover:after:bg-black ">
                 My Account
               </span>
