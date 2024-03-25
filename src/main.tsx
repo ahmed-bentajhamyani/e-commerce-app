@@ -1,12 +1,12 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
+import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import { CartProvider } from "./context/CartContext.tsx";
 import App from "./App.tsx";
 import "./index.css";
 import { WishlistProvider } from "./context/WishlistContext.tsx";
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
+ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <WishlistProvider>
@@ -15,5 +15,6 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         </CartProvider>
       </WishlistProvider>
     </BrowserRouter>
-  </React.StrictMode>
+  </React.StrictMode>,
+  document.getElementById("root")
 );
