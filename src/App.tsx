@@ -7,7 +7,7 @@ import Footer from "./components/Footer";
 import HomePage from "./pages/HomePage";
 import ProductsPage from "./pages/ProductsPage";
 import ProductPage from "./pages/ProductPage";
-// import WishlistPage from "./pages/WishlistPage";
+import WishlistPage from "./pages/WishlistPage";
 
 function App() {
   return (
@@ -18,7 +18,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/products/:category" element={<ProductsPage />} />
           <Route path="/product/:id" element={<ProductPage />} />
-          {/* <Route path="/wishlist" element={<WishlistPage />} /> */}
+          <Route path="/wishlist" element={<WishlistPage />} />
 
           {/* <Route path="/login" element={<LoginPage />} /> */}
           {/* <Route path="/register" element={<RegisterPage />} /> */}
