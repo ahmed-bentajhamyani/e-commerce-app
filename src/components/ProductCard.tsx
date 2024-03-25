@@ -1,6 +1,7 @@
 import { HeartFilledIcon, HeartIcon } from "@radix-ui/react-icons";
 import { memo, useEffect, useState } from "react";
 import { Product } from "../types/Product";
+import { useNavigate } from "react-router-dom";
 
 export interface IProductCard {
   style?: string;
@@ -9,6 +10,7 @@ export interface IProductCard {
 
 export default memo(function ProductCard({ style, data }: IProductCard) {
   const [isWished, setIsWished] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const values = localStorage.getItem("wishedItems");
@@ -37,7 +39,10 @@ export default memo(function ProductCard({ style, data }: IProductCard) {
   return (
     <article className={`flex flex-col col-span-1 m-2 ${style}`}>
       <div className="relative hover:[&>a>img]:scale-100 overflow-hidden hover:border border- border-[#EBEBEB] border-solid">
-        <a href="" className=" cursor-pointer">
+        <a
+          className="cursor-pointer"
+          onClick={() => navigate(`/product/${data.id}`)}
+        >
           <img
             className="transition-all scale-90 w-full"
             src={data.image}
