@@ -67,7 +67,9 @@ function Navbar() {
             className={`transition-all duration-[0.25S] ${isFixed ? "gap-x-4" : "gap-x-5"} flex h-full items-center justify-end text-sm`}
           >
             <li className="cursor-pointer">
-              <span className="after:transition after:ease-in after:duration-200 relative z-10 after:top-7 hover:after:absolute hover:after:inline-block hover:after:bottom-0 hover:after:left-0 hover:after:w-full hover:after:h-[2px] hover:after:bg-black ">
+              <span
+              onClick={() => navigate("/products/new")}
+              className="after:transition after:ease-in after:duration-200 relative z-10 after:top-7 hover:after:absolute hover:after:inline-block hover:after:bottom-0 hover:after:left-0 hover:after:w-full hover:after:h-[2px] hover:after:bg-black ">
                 NEW IN
               </span>
             </li>
@@ -104,12 +106,14 @@ function Navbar() {
               </span>
             </li>
             <li className=" cursor-pointer text-red-500">
-              <span className="after:transition after:ease-in after:duration-200 relative z-10 after:top-7 hover:after:absolute hover:after:inline-block hover:after:bottom-0 hover:after:left-0 hover:after:w-full hover:after:h-[2px] hover:after:bg-black ">
-                Sale
+              <span  onClick={() => navigate("/products/suits")} className="after:transition after:ease-in after:duration-200 relative z-10 after:top-7 hover:after:absolute hover:after:inline-block hover:after:bottom-0 hover:after:left-0 hover:after:w-full hover:after:h-[2px] hover:after:bg-black ">
+                SUITS
               </span>
             </li>
             <li className="cursor-pointer">
-              <span className="after:transition after:ease-in after:duration-200 relative z-10 after:top-7 hover:after:absolute hover:after:inline-block hover:after:bottom-0 hover:after:left-0 hover:after:w-full hover:after:h-[2px] hover:after:bg-black ">
+              <span
+                onClick={() => navigate("/products/designers")}
+                className="after:transition after:ease-in after:duration-200 relative z-10 after:top-7 hover:after:absolute hover:after:inline-block hover:after:bottom-0 hover:after:left-0 hover:after:w-full hover:after:h-[2px] hover:after:bg-black ">
                 DESIGNERS
               </span>
             </li>
