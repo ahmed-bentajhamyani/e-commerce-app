@@ -2,7 +2,7 @@ import axios from "axios";
 import { Product } from "../types/Product";
 
 const ProductService = {
-    URL: '/data/',
+    URL: './data/',
 
     getProducts: async function () {
         return await axios.get(this.URL + 'products.json');
