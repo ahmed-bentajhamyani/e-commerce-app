@@ -18,9 +18,6 @@ export default {
         },
         text: {
           secondary: "#999",
-        },
-        backgroundImage: {
-          'pIcon': "url('/test.jpg')",
         }
       },
     },

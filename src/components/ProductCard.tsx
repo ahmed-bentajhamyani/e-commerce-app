@@ -59,8 +59,8 @@ export default memo(function ProductCard({ style, data }: IProductCard) {
         <h2 className="font-black uppercase font-playfair-display">
           {data.product_name}
         </h2>
-        <p className="uppercase font-light  ">{data.description}</p>
-        <p className="font-semibold">{data.price} $</p>
+        <p className="uppercase font-light  ">{data?.description}</p>
+        <p className="font-semibold">{data?.price} $</p>
       </div>
     </article>
   );

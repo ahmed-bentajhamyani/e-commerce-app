@@ -8,7 +8,7 @@ import ProductsPage from "./pages/ProductsPage";
 
 // import HomePage from "./pages/HomePage";
 // import ProductsPage from "./pages/ProductsPage";
-// import ProductPage from "./pages/ProductPage";
+import ProductPage from "./pages/ProductPage";
 // import WishlistPage from "./pages/WishlistPage";
 
 function App() {
@@ -20,6 +20,8 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/products/:category" element={<ProductsPage />} />
           {/* <Route path="/products/:id" element={<ProductPage />} /> */}
+          {/* <Route path="/products" element={<ProductsPage />} /> */}
+          <Route path="/products/:id" element={<ProductPage />} />
           {/* <Route path="/wishlist" element={<WishlistPage />} /> */}
 
           {/* <Route path="/login" element={<LoginPage />} /> */}
