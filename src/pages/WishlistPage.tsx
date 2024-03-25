@@ -1,8 +1,6 @@
 import WishlistRow from "../components/WishlistRow"
 import { useWishlistContext } from "../context/WishlistContext"
 
-
-
 export default function WishListPage() {
     const { wishlistProducts, removeWishlistProduct } = useWishlistContext()
     return (
@@ -32,7 +30,9 @@ export default function WishListPage() {
                         </>
                         :
                         <>
-                            <section></section>
+                            <section className="w-full flex justify-center p-24 font-semibold text-secondary bg-[#FBFBFB]">
+                                <p>Your wishlist is empty...</p>
+                            </section>
                         </>
                 }
             </section>

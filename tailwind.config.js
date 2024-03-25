@@ -15,17 +15,10 @@ export default {
         secondary: '#555',
         bg: {
           secondary: '#EEE',
-          disabled: '#eeeeee'
-        },
-        section: {
-          bg: '#FBFBFB'
         },
         text: {
           secondary: '#999',
-          destructive: '#333'
         },
-        foreground: '#fff',
-        error: '#d92b2b',
         backgroundImage: {
           'pIcon': "url('../public/test.jpg')",
         }
