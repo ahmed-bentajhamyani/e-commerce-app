@@ -40,7 +40,7 @@ export default memo(function ProductCard({ style, data }: IProductCard) {
         <a href="" className=" cursor-pointer">
           <img
             className="transition-all scale-90 w-full"
-            src={"/images/" + data.image}
+            src={data.image}
             alt=""
           />
         </a>

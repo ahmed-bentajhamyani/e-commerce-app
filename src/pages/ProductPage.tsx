@@ -32,7 +32,7 @@ export default function ProductPage() {
   return (
     <section className="p-5 md:p-10 lg:p-16">
       <section className="grid md:grid-cols-2 place-items-center">
-        <img src={`/images/${product?.image}`} alt="" className="h-96" />
+        <img src={product?.image} alt="" className="h-96" />
         <div className="w-full mt-10 md:mt-2 md:px-5 lg:px-20">
           <h2 className="font-playfair-display font-bold text-3xl">
             {product?.product_name}
