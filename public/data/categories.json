@@ -46,5 +46,13 @@
   {
     "id": 12,
     "category_name": "BAGS"
+  },
+  {
+    "id": 13,
+    "category_name": "SUITS"
+  },
+  {
+    "id": 14,
+    "category_name": "NEW"
   }
 ]
