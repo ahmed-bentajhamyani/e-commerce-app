@@ -3,12 +3,12 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 
 import { FirebaseError } from "firebase/app";
-import { signIn } from "@/services/authService";
 
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/shadcn/ui/form";
 import { Input } from "@/components/shadcn/ui/input";
 import { Button } from "@/components/shadcn/ui/button";
 import { Link, useNavigate } from "react-router-dom";
+import { signIn } from "@/services/authService";
 
 const formSchema = z.object({
     email: z.string({ required_error: "This field is required" })
@@ -20,10 +20,13 @@ const formSchema = z.object({
 })
 export default function LoginPage() {
     const navigate = useNavigate()
-
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
-        mode: "onTouched"
+        mode: "onTouched",
+        defaultValues: {
+            email: "",
+            password: ""
+        }
     })
     function onSubmit(values: z.infer<typeof formSchema>) {
         signIn(values.email, values.password).then(() => {
@@ -48,7 +51,7 @@ export default function LoginPage() {
                 <h1 className="font-playfair-display text-2xl font-bold">Login</h1>
                 {form.formState.errors.root &&
                     <div className="w-full flex justify-center">
-                        <p className="text-[##9a1818]">{form.formState.errors.root.message}</p>
+                        <p className="text-red-500">{form.formState.errors.root.message}</p>
                     </div>
                 }
                 <Form {...form}>

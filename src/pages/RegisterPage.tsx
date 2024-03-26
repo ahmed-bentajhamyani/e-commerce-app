@@ -26,11 +26,16 @@ const formSchema = z.object({
 })
 export default function RegisterPage() {
     const navigate = useNavigate()
-
     const form = useForm<z.infer<typeof formSchema>>(
         {
             resolver: zodResolver(formSchema),
-            mode: "onTouched"
+            mode: "onTouched",
+            defaultValues: {
+                displayName: "",
+                email: "",
+                password: "",
+                confirmPassword: ""
+            }
         })
     function onSubmit(values: z.infer<typeof formSchema>) {
         register(values.email, values.password).then((userCredential) => {

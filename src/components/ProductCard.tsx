@@ -13,7 +13,6 @@ export default memo(function ProductCard({ style, data }: IProductCard) {
   const navigate = useNavigate();
 
   const { isWished, toggleWishlist } = useToggleWishlist("wishlistProducts");
-  console.log(data.id);
 
   return (
     <article className={`flex flex-col col-span-1 m-2 ${style}`}>

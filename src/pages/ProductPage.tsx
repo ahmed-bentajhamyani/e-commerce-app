@@ -23,7 +23,6 @@ export default function ProductPage() {
   const [relatedProducts, setRelatedProducts] = useState<Product[]>([]);
 
   const { increaseCartQuantity, setShowCart } = useCart();
-
   const { isWished, toggleWishlist } = useToggleWishlist("wishlistProducts");
 
   useEffect(() => {

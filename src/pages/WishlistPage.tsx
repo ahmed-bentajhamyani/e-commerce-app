@@ -3,10 +3,8 @@ import WishlistRow from "../components/WishlistRow"
 import { useEffect, useState } from "react";
 import { Product } from "../types/Product";
 import ProductService from "@/services/ProductService";
-// import { useWishlistContext } from "../context/WishlistContext"
 
 export default function WishListPage() {
-    // const { wishlistProducts, removeWishlistProductById } = useWishlistContext()
     const { wishlistProducts, toggleWishlist } = useToggleWishlist("wishlistProducts");
     const [products, setProducts] = useState<Product[]>([]);
 
@@ -17,10 +15,8 @@ export default function WishListPage() {
             const filtredProducts = fetchedProducts.filter((product: Product) => wishlistProducts.includes(product.id))
             setProducts(filtredProducts)
         });
-
-        // setProducts();
     }, [wishlistProducts]);
-
+    
     return (
         <main className="flex min-h-full flex-col items-center justify-center">
             <section className="w-full flex flex-col items-center p-2 gap-10 md:p-8">
