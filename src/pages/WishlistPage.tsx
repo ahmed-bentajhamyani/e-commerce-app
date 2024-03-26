@@ -1,12 +1,13 @@
-import WishlistRow from "../components/WishlistRow"
-import { useMemo, useState } from "react";
+import useToggleWishlist from "@/hooks/useToggleWishlist";
+import WishlistRow from "../components/WishlistRow";
+import { useEffet, useState } from "react";
 import { Product } from "../types/Product";
 import ProductService from "@/services/ProductService";
 
 export default function WishListPage() {
     const [products, setProducts] = useState<Product[]>([]);
 
-    useMemo(() => {
+    useEffet(() => {
         const values = localStorage.getItem("wishlistProducts");
         const wishlistProducts = values ? (JSON.parse(values) as number[]) : [];
 
@@ -16,7 +17,6 @@ export default function WishListPage() {
             setProducts(filtredProducts)
         });
     }, []);
-
     return (
         <main className="flex min-h-full flex-col items-center justify-center">
             <section className="w-full flex flex-col items-center p-2 gap-10 md:p-8">

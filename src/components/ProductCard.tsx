@@ -12,8 +12,6 @@ export interface IProductCard {
 export default memo(function ProductCard({ style, data }: IProductCard) {
   const navigate = useNavigate();
 
-  console.log(data.id);
-
   const { isWished, toggleWishlist } = useToggleWishlist("wishlistProducts", data?.id);
 
   return (

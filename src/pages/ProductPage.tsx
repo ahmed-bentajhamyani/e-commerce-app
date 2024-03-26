@@ -29,7 +29,7 @@ export default function ProductPage() {
         setRelatedProducts(res)
       );
   }, [product]);
-
+  
   function renderProduct(relatedProduct: Product) {
     return (
       <SwiperSlide className="!w-[180px] !md:w-[250px]">
