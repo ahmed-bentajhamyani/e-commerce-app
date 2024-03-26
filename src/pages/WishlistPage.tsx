@@ -1,13 +1,12 @@
-import useToggleWishlist from "@/hooks/useToggleWishlist";
 import WishlistRow from "../components/WishlistRow";
-import { useEffet, useState } from "react";
+import { useEffect, useState } from "react";
 import { Product } from "../types/Product";
 import ProductService from "@/services/ProductService";
 
 export default function WishListPage() {
     const [products, setProducts] = useState<Product[]>([]);
 
-    useEffet(() => {
+    useEffect(() => {
         const values = localStorage.getItem("wishlistProducts");
         const wishlistProducts = values ? (JSON.parse(values) as number[]) : [];
 
