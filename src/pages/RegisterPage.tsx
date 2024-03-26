@@ -124,7 +124,7 @@ export default function RegisterPage() {
                                             disabled={field.disabled}
                                             name={field.name}
                                             ref={field.ref}
-                                            className="rounded-none" required />
+                                            className="rounded-none" required type="password" />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -143,7 +143,7 @@ export default function RegisterPage() {
                                             disabled={field.disabled}
                                             name={field.name}
                                             ref={field.ref}
-                                            className="rounded-none" required />
+                                            className="rounded-none" required type="password" />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
