@@ -5,12 +5,11 @@ import Logo from "./Logo.tsx";
 import { useCart } from "../context/CartContext.tsx";
 import Mobnavbar from "./Mobnavbar.tsx";
 import { useNavigate } from "react-router-dom";
-import { useWishlistContext } from "@/context/WishlistContext.tsx";
 
 function Navbar() {
   const [isFixed, setIsFixed] = useState(false);
   const [showSearch, setshowSearch] = useState(false);
-  const [inputField, setinputField ] = useState("");
+  const [inputField, setinputField] = useState("");
 
   const navigate = useNavigate();
   useEffect(() => {
@@ -26,7 +25,7 @@ function Navbar() {
   }, []);
 
   const { cartQuantity, setShowCart } = useCart();
-  const { wishlistProductsAmount } = useWishlistContext();
+
   return (
     <header>
       <section className="hidden lg:block">
@@ -45,8 +44,8 @@ function Navbar() {
           className={` ${showSearch ? "block" : "hidden"} w-full flex items-center justify-center`}
         >
           <input
-            onChange={(e)=>{setinputField(e.target.value)}}
-            onKeyDown={(e)=>{
+            onChange={(e) => { setinputField(e.target.value) }}
+            onKeyDown={(e) => {
               if (e.key == "Enter")
                 navigate(`/search/${inputField}`)
             }}
@@ -74,8 +73,8 @@ function Navbar() {
           >
             <li className="cursor-pointer">
               <span
-              onClick={() => navigate("/products/new")}
-              className="after:transition after:ease-in after:duration-200 relative z-10 after:top-7 hover:after:absolute hover:after:inline-block hover:after:bottom-0 hover:after:left-0 hover:after:w-full hover:after:h-[2px] hover:after:bg-black ">
+                onClick={() => navigate("/products/new")}
+                className="after:transition after:ease-in after:duration-200 relative z-10 after:top-7 hover:after:absolute hover:after:inline-block hover:after:bottom-0 hover:after:left-0 hover:after:w-full hover:after:h-[2px] hover:after:bg-black ">
                 NEW IN
               </span>
             </li>
@@ -112,7 +111,7 @@ function Navbar() {
               </span>
             </li>
             <li className=" cursor-pointer text-red-500">
-              <span  onClick={() => navigate("/products/suits")} className="after:transition after:ease-in after:duration-200 relative z-10 after:top-7 hover:after:absolute hover:after:inline-block hover:after:bottom-0 hover:after:left-0 hover:after:w-full hover:after:h-[2px] hover:after:bg-black ">
+              <span onClick={() => navigate("/products/suits")} className="after:transition after:ease-in after:duration-200 relative z-10 after:top-7 hover:after:absolute hover:after:inline-block hover:after:bottom-0 hover:after:left-0 hover:after:w-full hover:after:h-[2px] hover:after:bg-black ">
                 SUITS
               </span>
             </li>
@@ -139,11 +138,6 @@ function Navbar() {
               className={`transition-all duration-[0.25S] ${isFixed ? "pr-4 pl-4" : "pr-6 pl-6"} h-full border-l border-gray-300 flex items-center justify-center transition ease-in duration-100 hover:bg-slate-100 cursor-pointer`}
               onClick={() => navigate("/wishlist")}
             >
-              <div
-                className={`${isFixed ? "top-[9px] right-[128px]" : "top-[160px] right-[155px]"} absolute flex items-center justify-center h-5 w-5 bg-black rounded-full text-white`}
-              >
-                <span className="text-xs">{wishlistProductsAmount}</span>
-              </div>
               <svg
                 className="svg-icon"
                 width={40}

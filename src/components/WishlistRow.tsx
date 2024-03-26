@@ -1,40 +1,35 @@
 import { Product } from "@/types/Product";
-import { Button } from "./shadcn/ui/button";
 import { useCart } from "@/context/CartContext";
-import { Cross2Icon } from "@radix-ui/react-icons";
-import { useEffect, useState } from "react";
-import ProductService from "@/services/ProductService";
-
+import { Button } from "./Button";
+import Close from "./icons/Close";
+import ShoppingCart from "./icons/ShoppingCart";
 
 interface WishlistRowProps {
-    wishlistProductId: Product['id']
+    wishlistProduct: Product
     callbackFn: () => void;
 }
 
-export default function WishlistRow({ wishlistProductId, callbackFn }: WishlistRowProps) {
-    const { increaseCartQuantity, getItemQuantity } = useCart()
-    const [product, setProduct] = useState<Product>()
-    useEffect(() => {
-        if (wishlistProductId)
-            ProductService.getProduct(wishlistProductId).then((res) => setProduct(res))
-    }, [wishlistProductId])
+export default function WishlistRow({ wishlistProduct, callbackFn }: WishlistRowProps) {
+    const { increaseCartQuantity, setShowCart } = useCart();
 
     const addToCart = () => {
-        if (!product?.id) return
-        if (getItemQuantity(product?.id) > 0) return;
-        increaseCartQuantity(product?.id)
-    }
-    return <tr className="flex flex-col items-center md:table-row md:grid-cols-none border-b-2 py-4">
+        if (wishlistProduct?.id) {
+            increaseCartQuantity(wishlistProduct.id);
+            setShowCart(true);
+        }
+    };
+
+    return <tr className="border-b-2">
         <td className="py-2">
-            <a className="w-max flex" href={`/product/${product?.id}`}>
-                <img className="h-36" src={product?.image} alt={product?.description.toUpperCase()} />
+            <a className="w-max flex" href={`/product/${wishlistProduct?.id}`}>
+                <img className="h-36" src={wishlistProduct?.image} alt={wishlistProduct?.description.toUpperCase()} />
             </a>
         </td>
         <td className="">
-            <a className="w-max flex flex-col" href={`/product/${product?.id}`}>
-                <h4 className="font-playfair-display font-bold text-xl uppercase">{product?.product_name}</h4>
+            <a className="w-max flex flex-col" href={`/product/${wishlistProduct?.id}`}>
+                <h4 className="font-playfair-display font-bold text-xl uppercase">{wishlistProduct?.product_name}</h4>
                 <p className="uppercase font-light">
-                    {product?.description}
+                    {wishlistProduct?.description}
                 </p>
             </a>
         </td>
@@ -46,14 +41,24 @@ export default function WishlistRow({ wishlistProductId, callbackFn }: WishlistR
                         currency: 'EUR',
                         minimumFractionDigits: 2,
                         maximumFractionDigits: 2,
-                    }).format(product?.price ?? 0)
+                    }).format(wishlistProduct?.price ?? 0)
                 }</p>
             </span>
         </td>
         <td className="col-span-3">
             <div className="flex flex-col items-center justify-center gap-2">
-                <Button className="w-fit md:w-[50%] uppercase bg-bg-secondary text-[#333] hover:bg-secondary hover:text-white gap-2" onClick={callbackFn}><Cross2Icon /> Delete</Button>
-                <Button className="w-fit lg:w-[50%] uppercase" onClick={addToCart}> Add to shopping bag</Button>
+                <Button
+                    action={callbackFn}
+                    style="flex justify-center items-center w-full px-10 py-3 space-x-1 text-sm md:text-base bg-bg-secondary rounded-none hover:bg-text-secondary/60 cursor-pointer whitespace-nowrap disabled:opacity-70 disabled:cursor-default"
+                    text="Delete"
+                    icon={<Close />}
+                />
+                <Button
+                    action={addToCart}
+                    style="flex justify-center items-center w-full px-10 py-3 space-x-1 text-sm md:text-base text-white bg-primary rounded-none hover:bg-secondary cursor-pointer whitespace-nowrap disabled:opacity-70 disabled:cursor-default"
+                    text="Add to cart"
+                    icon={<ShoppingCart fillColor="#fff" width={25} height={25} />}
+                />
             </div>
         </td>
     </tr>

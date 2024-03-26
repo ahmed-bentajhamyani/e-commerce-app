@@ -1,8 +1,8 @@
 import { HeartFilledIcon, HeartIcon } from "@radix-ui/react-icons";
-import { memo, useState } from "react";
-import { Product } from "../types/Product";
+import { memo } from "react";
 import { useNavigate } from "react-router-dom";
-import { useWishlistContext } from "@/context/WishlistContext";
+import { Product } from "../types/Product";
+import useToggleWishlist from "@/hooks/useToggleWishlist";
 
 export interface IProductCard {
   style?: string;
@@ -10,23 +10,13 @@ export interface IProductCard {
 }
 
 export default memo(function ProductCard({ style, data }: IProductCard) {
-  const { isProductInWishlist, addWishlistProductById, removeWishlistProductById } = useWishlistContext();
-  const [isWished, setIsWished] = useState(isProductInWishlist(data.id));
   const navigate = useNavigate();
-  const toggleWished = () => {
-    if (isWished) {
-      removeWishlistProductById(data.id);
-      setIsWished(false);
-    }
-    else {
-      addWishlistProductById(data.id);
-      setIsWished(true)
-    }
-  };
+
+  const { isWished, toggleWishlist } = useToggleWishlist("wishlistProducts");
 
   return (
     <article className={`flex flex-col col-span-1 m-2 ${style}`}>
-      <div className="relative hover:[&>a>img]:scale-100 overflow-hidden hover:border border- border-[#EBEBEB] border-solid">
+      <div className="relative hover:[&>a>img]:scale-100 overflow-hidden hover:border border-[#EBEBEB]">
         <a
           className="cursor-pointer"
           onClick={() => navigate(`/product/${data.id}`)}
@@ -39,7 +29,7 @@ export default memo(function ProductCard({ style, data }: IProductCard) {
         </a>
         <button
           className="wishlist absolute top-3 right-3 outline-none"
-          onClick={toggleWished}
+          onClick={() => toggleWishlist(data?.id)}
         >
           {isWished ? (
             <HeartFilledIcon width={30} height={30} />
