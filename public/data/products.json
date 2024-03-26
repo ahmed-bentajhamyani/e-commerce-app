@@ -581,5 +581,82 @@
     "quantity": 20,
     "color": "BLUE",
     "category_id": 14
+  },
+  {
+    "id": 54,
+    "image": "https://images.eleonorabonucci.com/photo/307852/930607/900/1200?text=930607",
+    "product_name": "MSGM",
+    "description": "SLIDE SANDAL",
+    "style_id": "3640MS208_86499",
+    "price": 95.00,
+    "quantity": 20,
+    "color": "BLACK",
+    "category_id": 9
+  },
+  {
+    "id": 55,
+    "image": "https://images.eleonorabonucci.com/photo/321403/930572/900/1200?text=930572",
+    "product_name": "OFF-WHITE",
+    "description": "SLIDE SANDAL",
+    "style_id": "1562153_V0020",
+    "price": 460.0,
+    "quantity": 20,
+    "color": "BLACK",
+    "category_id": 9
+  },
+  {
+    "id": 56,
+    "image": "https://images.eleonorabonucci.com/photo/320117/934705/900/1200?text=934705",
+    "product_name": "MAISON MARGIELA",
+    "description": "TABI THONG SANDAL",
+    "style_id": "801562153_H20",
+    "price": 360.0,
+    "quantity": 20,
+    "color": "BLACK",
+    "category_id": 9
+  },
+  {
+    "id": 57,
+    "image": "https://images.eleonorabonucci.com/photo/326492/942468/900/1200?text=942468",
+    "product_name": "BALENCIAGA",
+    "description": "SANDAL POOL SLIDE",
+    "style_id": " 801562153_V0020",
+    "price": 325.0,
+    "quantity": 20,
+    "color": "BLUE",
+    "category_id": 9
+  },
+  {
+    "id": 58,
+    "image": "https://images.eleonorabonucci.com/photo/323531/957481/900/1200?text=957481",
+    "product_name": "BIRKENSTOCK",
+    "description": "BOSTON RUBBER SHOE",
+    "style_id": "1026215_KHAKI",
+    "price": 60.0,
+    "quantity": 20,
+    "color": "GREEN",
+    "category_id": 9
+  },
+  {
+    "id": 59,
+    "image": "https://images.eleonorabonucci.com/photo/325399/960676/900/1200?text=960676",
+    "product_name": "PARABOOT",
+    "description": "BABORD LEATHER LOAFER",
+    "style_id": "222203_MARRON",
+    "price": 285.0,
+    "quantity": 20,
+    "color": "BROWN",
+    "category_id": 9
+  },
+  {
+    "id": 60,
+    "image": "https://images.eleonorabonucci.com/photo/318111/927610/900/1200?text=927610",
+    "product_name": "PREMIATA",
+    "description": "LEATHER LOAFER",
+    "style_id": "222203_MARRON",
+    "price": 510.0,
+    "quantity": 20,
+    "color": "BLACK",
+    "category_id": 9
   }
 ]
