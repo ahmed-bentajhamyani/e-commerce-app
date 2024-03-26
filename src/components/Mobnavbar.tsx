@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import { useCart } from "../context/CartContext.tsx";
-import { useNavigate } from "react-router-dom";
 import { Link, useNavigate } from "react-router-dom";
-import { useWishlistContext } from "@/context/WishlistContext.tsx";
 import { getCurrentUser, signOut } from "@/services/authService.ts";
 import { PersonIcon } from "@radix-ui/react-icons";
 

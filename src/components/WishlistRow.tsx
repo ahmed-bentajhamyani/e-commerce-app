@@ -47,8 +47,6 @@ export default function WishlistRow({ wishlistProduct, callbackFn }: WishlistRow
         </td>
         <td className="col-span-3">
             <div className="flex flex-col items-center justify-center gap-2">
-                {/* <Button className="w-[50%] uppercase bg-bg-secondary text-[#333] hover:bg-secondary hover:text-white gap-2" onClick={callbackFn}><Cross2Icon /> Delete</Button>
-                <Button className="w-[50%] uppercase" onClick={addToCart}> Add to shopping bag</Button> */}
                 <Button
                     action={callbackFn}
                     style="flex justify-center items-center w-full px-10 py-3 space-x-1 text-sm md:text-base bg-bg-secondary rounded-none hover:bg-text-secondary/60 cursor-pointer whitespace-nowrap disabled:opacity-70 disabled:cursor-default"
