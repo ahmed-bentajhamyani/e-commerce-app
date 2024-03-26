@@ -7,11 +7,11 @@ import ProductService from "@/services/ProductService";
 
 
 interface WishlistRowProps {
-    wishlistProductId: Product['id']
+    wishlistProduct: Product
     callbackFn: () => void;
 }
 
-export default function WishlistRow({ wishlistProductId, callbackFn }: WishlistRowProps) {
+export default function WishlistRow({ wishlistProduct, callbackFn }: WishlistRowProps) {
     const { increaseCartQuantity, getItemQuantity } = useCart()
     const [product, setProduct] = useState<Product>()
     useEffect(() => {

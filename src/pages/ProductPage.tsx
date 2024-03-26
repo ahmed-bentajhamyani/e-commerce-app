@@ -81,7 +81,7 @@ export default function ProductPage() {
               action={addToCart}
               style="flex justify-center items-center w-full px-10 py-3 space-x-1 text-sm md:text-base text-white bg-primary rounded-none hover:bg-secondary cursor-pointer whitespace-nowrap disabled:opacity-70 disabled:cursor-default"
               text="Add to cart"
-              icon={<ShoppingCart />}
+              icon={<ShoppingCart fillColor="#fff" width={30} height={30} />}
             />
             <Button
               action={() => toggleWishlist(product?.id || 0)}
