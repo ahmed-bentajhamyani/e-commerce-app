@@ -1,42 +1,41 @@
 import axios from "axios";
-import { Product } from "../types/Product";
 
 const ProductService = {
-    URL: '/data/',
+    URL: 'https://e-commerce-sqli-api-1.vercel.app',
 
     getProducts: async function () {
-        return await axios.get(this.URL + 'products.json');
+        return await axios.get(this.URL + '/products');
     },
 
     getProduct: async function (id: number) {
-        return await axios.get(this.URL + 'products.json')
+        return await axios.get(this.URL + '/products/'+id)
             .then(res => {
-                return res.data.find((p: Product) => p.id === id);
+                return res.data;
             });
     },
 
     getProductsByCategory: async function (category_id: number) {
-        return await axios.get(this.URL + 'products.json')
+        return await axios.get(this.URL + '/products/cat/'+ category_id)
             .then(res => {
-                return res.data.filter((p: Product) => p.category_id === category_id);
+                return res.data;
             });
     },
 
     getCategories: async function () {
-        return await axios.get(this.URL + 'categories.json');
+        return await axios.get(this.URL + '/categories');
     },
 
     getCategory: async function (id: number) {
-        return await axios.get(this.URL + 'categories.json')
+        return await axios.get(this.URL + '/categories/'+id)
             .then(res => {
-                return res.data.find((c: { id: number; }) => c.id === id);
+                return res.data;
             });
     },
 
     getCategoryByName: async function (name: string) {
-        return await axios.get(this.URL + 'categories.json')
+        return await axios.get(this.URL + '/categories/name/'+name.toLowerCase())
             .then(res => {
-                return res.data.find((c: { category_name: string; }) => c.category_name === name);
+                return res.data;
             });
     },
 };
