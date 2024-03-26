@@ -18,6 +18,7 @@ export function signOut() {
 export function getCurrentUser() {
     let user: User | null = null
     onAuthStateChanged(auth, (_user) => {
+        console.log(_user);
         if (_user) {
             user = _user;
         }
