@@ -18,7 +18,7 @@ export default function ProductPage() {
   const [product, setProduct] = useState<Product>();
   const [relatedProducts, setRelatedProducts] = useState<Product[]>([]);
   const { increaseCartQuantity, setShowCart } = useCart();
-  const { addWishlistProduct } = useWishlistContext();
+  const { addWishlistProductById } = useWishlistContext();
 
   useEffect(() => {
     if (id)
@@ -40,7 +40,7 @@ export default function ProductPage() {
   };
 
   const addToWishlist = () => {
-    if (product?.id) addWishlistProduct(product);
+    if (product?.id) addWishlistProductById(product?.id);
   };
 
   function renderProduct(relatedProduct: Product) {

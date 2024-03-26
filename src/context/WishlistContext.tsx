@@ -3,20 +3,20 @@ import { createContext, useContext, useEffect, useState } from "react"
 
 
 interface WishlistContextType {
-    wishlistProducts: Product[]
-    addWishlistProduct: (WishlistProduct: Product) => void
-    removeWishlistProductById: (productId: number) => void
-    isProductInWishlist: (productId: number) => boolean
-    clearwishlistProducts: () => void
+    wishlistProductIds: Product['id'][]
+    addWishlistProductById: (productId: Product['id']) => void
+    removeWishlistProductById: (productId: Product['id']) => void
+    isProductInWishlist: (productId: Product['id']) => boolean
+    clearwishlistProductIds: () => void
     wishlistProductsAmount: number
 }
 
 const WishlistContext = createContext<WishlistContextType>({
-    wishlistProducts: [],
-    addWishlistProduct: () => { },
+    wishlistProductIds: [],
+    addWishlistProductById: () => { },
     removeWishlistProductById: () => { },
     isProductInWishlist: () => false,
-    clearwishlistProducts: () => { },
+    clearwishlistProductIds: () => { },
     wishlistProductsAmount: 0
 })
 
@@ -25,39 +25,39 @@ export function useWishlistContext() {
 }
 
 export function WishlistProvider({ children }: { children: React.ReactNode }) {
-    const [wishlistProducts, setwishlistProducts] = useState<Product[]>(
-        JSON.parse(localStorage.getItem("wishlistProducts")!) || []
+    const [wishlistProductIds, setwishlistProductIds] = useState<Product['id'][]>(
+        JSON.parse(localStorage.getItem("wishlistProductIds")!) || []
     )
 
-    const wishlistItemsAmount = wishlistProducts.length;
+    const wishlistItemsAmount = wishlistProductIds.length;
 
-    const isProductInWishlist = (productId: number) => {
-        return wishlistProducts.some((product) => product.id === productId);
+    const isProductInWishlist = (productId: Product['id']) => {
+        return wishlistProductIds.some((id) => id === productId);
     }
 
-    const addWishlistProduct = (wishlistProduct: Product) => {
-        if (wishlistProducts.some((product) => product.id === wishlistProduct.id)) return;
-        setwishlistProducts([...wishlistProducts, wishlistProduct])
+    const addWishlistProductById = (productId: Product['id']) => {
+        if (wishlistProductIds.some((id) => id === productId)) return;
+        setwishlistProductIds([...wishlistProductIds, productId])
     }
     const removeWishlistProductById = (productId: number) => {
-        setwishlistProducts(wishlistProducts.filter((product) => product.id !== productId))
+        setwishlistProductIds(wishlistProductIds.filter((id) => id !== productId))
     }
-    const clearwishlistProducts = () => {
-        setwishlistProducts([])
+    const clearwishlistProductIds = () => {
+        setwishlistProductIds([])
     }
 
     useEffect(() => {
-        localStorage.setItem("wishlistProducts", JSON.stringify(wishlistProducts));
-    }, [wishlistProducts]);
+        localStorage.setItem("wishlistProductIds", JSON.stringify(wishlistProductIds));
+    }, [wishlistProductIds]);
     return (
         <WishlistContext.Provider
             value={
                 {
-                    wishlistProducts: wishlistProducts,
-                    addWishlistProduct: addWishlistProduct,
+                    wishlistProductIds: wishlistProductIds,
+                    addWishlistProductById: addWishlistProductById,
                     removeWishlistProductById: removeWishlistProductById,
                     isProductInWishlist: isProductInWishlist,
-                    clearwishlistProducts: clearwishlistProducts,
+                    clearwishlistProductIds: clearwishlistProductIds,
                     wishlistProductsAmount: wishlistItemsAmount,
                 }
             }
