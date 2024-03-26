@@ -26,7 +26,6 @@ const formSchema = z.object({
 })
 export default function RegisterPage() {
     const navigate = useNavigate()
-
     const form = useForm<z.infer<typeof formSchema>>(
         {
             resolver: zodResolver(formSchema),

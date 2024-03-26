@@ -1,5 +1,5 @@
 import ScrollToTop from "./utils/ScrollTop";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Outlet, Navigate } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -11,8 +11,15 @@ import WishlistPage from "./pages/WishlistPage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import SearchPage from "./pages/SearchPage"
+import { getCurrentUser } from "./services/authService";
 
 function App() {
+  const ProtectedRoute = () => {
+    if (getCurrentUser()) {
+      return <Navigate to={"/"} replace />
+    }
+    return <Outlet />
+  }
   return (
     <>
       <Navbar />
@@ -23,9 +30,10 @@ function App() {
           <Route path="/product/:id" element={<ProductPage />} />
           <Route path="/wishlist" element={<WishlistPage />} />
           <Route path="/search/:key" element={<SearchPage />} />
-
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<RegisterPage />} />
+          <Route element={<ProtectedRoute />}>
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<RegisterPage />} />
+          </Route>
         </Routes>
       </ScrollToTop>
       <Footer />

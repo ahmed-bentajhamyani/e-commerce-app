@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { useCart } from "../context/CartContext.tsx";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useWishlistContext } from "@/context/WishlistContext.tsx";
+import { getCurrentUser, signOut } from "@/services/authService.ts";
+import { PersonIcon } from "@radix-ui/react-icons";
 
 function Mobnavbar() {
 
@@ -67,7 +69,6 @@ function Mobnavbar() {
             </svg>
           </span>
         </div>
-
         <div onClick={() => { navigate("/") }} className={` cursor-pointer flex items-center justify-center ${showSearch ? 'hidden' : ''} `}>
           <img className="h-7" src="/logo.png">
           </img>
@@ -187,19 +188,19 @@ function Mobnavbar() {
 
               </span>
             </li>
-            <li className="cursor-pointer">
+            <li>
               <span className="after:transition after:ease-in after:duration-200 relative z-10 after:top-4 hover:after:absolute hover:after:inline-block hover:after:bottom-0 hover:after:left-0 hover:after:w-full hover:after:h-[2px] hover:after:bg-black ">
-                My Account
-              </span>
-            </li>
-            <li className="cursor-pointer">
-              <span className="after:transition after:ease-in after:duration-200 relative z-10 after:top-4 hover:after:absolute hover:after:inline-block hover:after:bottom-0 hover:after:left-0 hover:after:w-full hover:after:h-[2px] hover:after:bg-black ">
-                My Account
-              </span>
-            </li>
-            <li className="cursor-pointer">
-              <span className="after:transition after:ease-in after:duration-200 relative z-10 after:top-4 hover:after:absolute hover:after:inline-block hover:after:bottom-0 hover:after:left-0 hover:after:w-full hover:after:h-[2px] hover:after:bg-black ">
-                My Account
+                {
+                  getCurrentUser() ?
+                    <div className="flex flex-col items-center border p-2">
+                      <div className="w-full flex gap-2">
+                        <PersonIcon/>
+                        {getCurrentUser()!.displayName}
+                      </div>
+                      <div className="cursor-pointer uppercase font-bold" onClick={() => { signOut(); navigate(0) }}>Sign Out</div>
+                    </div>
+                    : <Link className="uppercase font-bold" to={"/login"}>Login</Link>
+                }
               </span>
             </li>
           </ul>

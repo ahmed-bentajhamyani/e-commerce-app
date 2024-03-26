@@ -13,6 +13,8 @@ import {
 import { cn } from "@/lib/utils"
 import { Label } from "@/components/shadcn/ui/label"
 
+import { v4 as uuidv4 } from 'uuid';
+
 const Form = FormProvider
 
 type FormFieldContextValue<
@@ -74,7 +76,7 @@ const FormItem = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => {
-  const id = React.useId()
+  const id = uuidv4()
 
   return (
     <FormItemContext.Provider value={{ id }}>
@@ -93,7 +95,7 @@ const FormLabel = React.forwardRef<
   return (
     <Label
       ref={ref}
-      className={cn(error && "text-red-500 dark:text-red-900", className)}
+      className={cn(error && "text-red-500 ", className)}
       htmlFor={formItemId}
       {...props}
     />
@@ -133,7 +135,7 @@ const FormDescription = React.forwardRef<
     <p
       ref={ref}
       id={formDescriptionId}
-      className={cn("text-sm text-neutral-500 dark:text-neutral-400", className)}
+      className={cn("text-sm text-neutral-500 ", className)}
       {...props}
     />
   )
@@ -155,7 +157,7 @@ const FormMessage = React.forwardRef<
     <p
       ref={ref}
       id={formMessageId}
-      className={cn("text-sm font-medium text-red-500 dark:text-red-900", className)}
+      className={cn("text-sm font-medium text-red-500 ", className)}
       {...props}
     >
       {body}

@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { User, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
 import { app } from "./firebase";
 
 const auth = getAuth(app)
@@ -15,8 +15,19 @@ export function signOut() {
     return auth.signOut()
 }
 
-export function getCurrentUser() {
-    return auth.currentUser
+export function getCurrentUser(): User | null {
+    let user: User | null = null
+    if (auth.currentUser) {
+        user = auth.currentUser;
+        return user
+    }
+    onAuthStateChanged(auth, (_user) => {
+        if (_user) {
+            user = _user;
+        }
+        else user = null;
+    })
+    return user
 }
 
 
