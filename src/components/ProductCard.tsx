@@ -10,7 +10,7 @@ export interface IProductCard {
 }
 
 export default memo(function ProductCard({ style, data }: IProductCard) {
-  const { isProductInWishlist, addWishlistProduct, removeWishlistProductById } = useWishlistContext();
+  const { isProductInWishlist, addWishlistProductById, removeWishlistProductById } = useWishlistContext();
   const [isWished, setIsWished] = useState(isProductInWishlist(data.id));
   const navigate = useNavigate();
   const toggleWished = () => {
@@ -19,7 +19,7 @@ export default memo(function ProductCard({ style, data }: IProductCard) {
       setIsWished(false);
     }
     else {
-      addWishlistProduct(data);
+      addWishlistProductById(data.id);
       setIsWished(true)
     }
   };
