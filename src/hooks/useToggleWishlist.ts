@@ -1,26 +1,31 @@
 import { useState } from "react";
 
-function useToggleWishlist(key: string) {
-    const [isWished, setIsWished] = useState(false);
-
-    const values = localStorage.getItem(key);
+function isWishedFunction(id: number) {
+    const values = localStorage.getItem("wishlistProducts");
     const parsedValues = values ? (JSON.parse(values) as number[]) : [];
+    if (parsedValues.includes(id)) return true;
+    else return false;
+}
 
-    const [wishlistProducts, setWishlistProducts] = useState(parsedValues)
+function useToggleWishlist(key: string, id: number) {
+    const [isWished, setIsWished] = useState(
+        () => isWishedFunction(id)
+    );
 
-    const toggleWishlist = (id: number) => {
+    const toggleWishlist = () => {
+        const values = localStorage.getItem(key);
+        const wishlistProducts = values ? (JSON.parse(values) as number[]) : [];
+
         if (wishlistProducts.includes(id)) {
-            setWishlistProducts(wishlistProducts.filter((item) => item !== id));
-            localStorage.setItem(key, JSON.stringify(wishlistProducts));
+            localStorage.setItem(key, JSON.stringify(wishlistProducts.filter((item) => item !== id)));
             setIsWished(false);
         } else {
-            setWishlistProducts([...wishlistProducts, id]);
-            localStorage.setItem(key, JSON.stringify(wishlistProducts));
+            localStorage.setItem(key, JSON.stringify([...wishlistProducts, id]));
             setIsWished(true);
         }
     }
 
-    return { isWished, toggleWishlist, wishlistProducts }
+    return { isWished, toggleWishlist }
 }
 
 export default useToggleWishlist;
