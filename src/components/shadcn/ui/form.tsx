@@ -13,6 +13,8 @@ import {
 import { cn } from "@/lib/utils"
 import { Label } from "@/components/shadcn/ui/label"
 
+import { v4 as uuidv4 } from 'uuid';
+
 const Form = FormProvider
 
 type FormFieldContextValue<
@@ -74,7 +76,7 @@ const FormItem = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => {
-  const id = React.useId()
+  const id = uuidv4()
 
   return (
     <FormItemContext.Provider value={{ id }}>
