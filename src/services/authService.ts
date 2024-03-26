@@ -16,18 +16,7 @@ export function signOut() {
 }
 
 export function getCurrentUser(): User | null {
-    let user: User | null = null
-    if (auth.currentUser) {
-        user = auth.currentUser;
-        return user
-    }
-    onAuthStateChanged(auth, (_user) => {
-        if (_user) {
-            user = _user;
-        }
-        else user = null;
-    })
-    return user
+    return auth.currentUser;
 }
 
 
