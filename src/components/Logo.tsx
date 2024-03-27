@@ -1,15 +1,15 @@
 import { useNavigate } from "react-router-dom"
 
-function Logo(){
-
+function Logo({ style, imgStyle }: { style?: string, imgStyle?: string }) {
   const navigate = useNavigate();
-    return (
-        <div onClick={()=>{navigate("/")}} className="h-24 flex items-center justify-center cursor-pointer">
-          <img className="h-9" src="/logo.png">
-            </img>
-        </div>
-    )
-    
-    }
-    
-    export default Logo
+
+  return (
+    <picture onClick={() => { navigate("/") }} className={`flex items-center justify-center cursor-pointer ${style}`}>
+      <source className={`${imgStyle}`} srcSet="/sqli_logo.webp" type="image/webp" />
+      <source className={`${imgStyle}`} srcSet="/sqli_logo.webp" type="image/jpeg" />
+      <img className={`${imgStyle}`} src="/sqli_logo.webp" />
+    </picture>
+  )
+}
+
+export default Logo

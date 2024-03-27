@@ -30,16 +30,14 @@ function Navbar() {
     <header>
       <section className="hidden lg:block">
         <Topbar />
-        <Logo />
+        <Logo imgStyle="h-24" />
       </section>
 
       <nav
         className={`z-10 hidden lg:flex transition-all duration-[0.25S] ${isFixed ? " h-14 top-0 pr-[47px] fixed w-full bg-white shadow-sm justify-between" : "h-20 pr-[50px]"} flex justify-end`}
       >
-        <img
-          className={`${isFixed ? "" : "hidden"} mt-4 ml-6 h-6`}
-          src="/logo.png"
-        ></img>
+        <Logo imgStyle={`${isFixed ? "" : "hidden"} h-16`} />
+
         <div
           className={` ${showSearch ? "block" : "hidden"} w-full flex items-center justify-center`}
         >
