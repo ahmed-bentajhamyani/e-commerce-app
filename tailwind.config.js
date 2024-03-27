@@ -12,6 +12,7 @@ export default {
       },
       screens: {
         xs: "480px",
+        "3xl": "2800px",
       },
       colors: {
         primary: "#111",

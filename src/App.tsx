@@ -40,20 +40,22 @@ function App() {
   };
   return (
     <div className="flex flex-col justify-between h-screen">
-      <Navbar />
-      <ScrollToTop>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/products/:category" element={<ProductsPage />} />
-          <Route path="/product/:id" element={<ProductPage />} />
-          <Route path="/wishlist" element={<WishlistPage />} />
-          <Route path="/search/:key" element={<SearchPage />} />
-          <Route element={<ProtectedRoute />}>
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/register" element={<RegisterPage />} />
-          </Route>
-        </Routes>
-      </ScrollToTop>
+      <div>
+        <Navbar />
+        <ScrollToTop>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/products/:category" element={<ProductsPage />} />
+            <Route path="/product/:id" element={<ProductPage />} />
+            <Route path="/wishlist" element={<WishlistPage />} />
+            <Route path="/search/:key" element={<SearchPage />} />
+            <Route element={<ProtectedRoute />}>
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/register" element={<RegisterPage />} />
+            </Route>
+          </Routes>
+        </ScrollToTop>
+      </div>
       <Footer />
     </div>
   );
