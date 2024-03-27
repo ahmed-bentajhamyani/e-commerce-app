@@ -20,7 +20,8 @@ export default function WishListPage() {
 
     useEffect(() => {
         setCount(products?.length)
-    }, [products])
+    }, [products]);
+    
     return (
         <main className="flex min-h-full flex-col items-center justify-center">
             <section className="w-full flex flex-col items-center p-2 gap-10 md:p-8">

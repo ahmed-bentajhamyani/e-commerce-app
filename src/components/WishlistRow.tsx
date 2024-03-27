@@ -6,8 +6,6 @@ import ShoppingCart from "./icons/ShoppingCart";
 import useToggleWishlist from "@/hooks/useToggleWishlist";
 import { Link } from "react-router-dom";
 
-
-
 export default function WishlistRow({ wishlistProduct, setCount }: { wishlistProduct: Product, setCount: React.Dispatch<React.SetStateAction<number>> }) {
     const { increaseCartQuantity, setShowCart } = useCart();
 
