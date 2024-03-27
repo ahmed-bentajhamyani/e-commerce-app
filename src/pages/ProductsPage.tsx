@@ -51,12 +51,11 @@ export default function ProductsPage() {
       <div className="w-full flex flex-col gap-4 bg-bg-secondary font-playfair-display uppercase font-semibold py-5 justify-center items-center">
         <p className="">{params.category}</p>
         <p className="font-poppins font-normal lowercase text-xs opacity-80">
-          men / new clothing /{" "}
+          men / new clothing /
           <span className="opacity-80">{params.category}</span>
         </p>
       </div>
       <div className="w-full flex sm:grid grid-cols-6 justify-center">
-        {" "}
         <div className="col-span-1">
           <WidgetFilter
             title="color"
@@ -91,13 +90,13 @@ export default function ProductsPage() {
               <SelectBox setSort={setSort} />
             </div>
           </div>
-          <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mb-8">
+          <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 3xl:grid-cols-5 mb-8">
             {_products.length > 0
               ? _products.map((item) => (
                   <ProductCard
                     key={item.id}
                     data={item}
-                    style="max-w-[260px]"
+                    style="max-w-[260px] 2xl:max-w-[350px]"
                   />
                 ))
               : null}

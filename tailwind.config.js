@@ -7,8 +7,12 @@ export default {
       "playfair-display": ["Playfair Display", "sans-serif"],
     },
     extend: {
+      transitionProperty: {
+        nav: "width, left",
+      },
       screens: {
         xs: "480px",
+        "3xl": "2800px",
       },
       colors: {
         primary: "#111",
