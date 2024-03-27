@@ -5,6 +5,7 @@ import ProductService from "@/services/ProductService";
 
 export default function WishListPage() {
     const [products, setProducts] = useState<Product[]>([]);
+    const [count, setCount] = useState<number>(0);
 
     useEffect(() => {
         const values = localStorage.getItem("wishlistProducts");
@@ -16,16 +17,22 @@ export default function WishListPage() {
             setProducts(filtredProducts)
         });
     }, []);
+
+    useEffect(() => {
+        setCount(products?.length)
+    }, [products]);
+    
     return (
         <main className="flex min-h-full flex-col items-center justify-center">
             <section className="w-full flex flex-col items-center p-2 gap-10 md:p-8">
                 <h1 className="font-playfair-display text-4xl font-bold">Wishlist</h1>
-                {products.length > 0 ?
+                {products.length > 0 && count > 0 ?
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full">
                         {products.map((product, index) =>
                             <WishlistRow
                                 key={index}
                                 wishlistProduct={product}
+                                setCount={setCount}
                             />
                         )}
                     </div>
