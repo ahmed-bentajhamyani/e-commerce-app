@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useCart } from "../context/CartContext.tsx";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { getCurrentUser, signOut } from "@/services/authService.ts";
 import { PersonIcon } from "@radix-ui/react-icons";
 import Logo from "./Logo.tsx";
@@ -28,9 +28,7 @@ function Mobnavbar() {
 
   return (
     <>
-      <nav
-        className={`lg:hidden flex justify-between transition-all items-center pr-5 pl-5 w-full h-14 bg-white z-30 shadow-sm duration-300 ${isFixed ? "top-0 fixed " : ""} `}
-      >
+      <nav className={`lg:hidden flex justify-between transition-all items-center pr-5 pl-5 w-full h-14 bg-white z-10 shadow-sm duration-300 ${isFixed ? "top-0 fixed" : ""} ${showList && "overflow-hidden"}`}>
         <div className="flex justify-start items-center">
           {/* Menu button */}
           <div className="mr-2">
@@ -141,9 +139,7 @@ function Mobnavbar() {
       </nav>
 
       {/* nav-links */}
-      <div
-        className={`flex flex-col justify-between items-center overflow-hidden text-primary bg-bg-secondary fixed w-4/5 sm:w-2/3 lg:w-2/5 h-screen top-0 left-0 z-20 transition-all duration-300 ${showList ? "translate-x-0" : "-translate-x-full"}`}
-      >
+      <div className={`flex flex-col justify-between items-center overflow-y-hidden text-primary bg-bg-secondary fixed w-4/5 sm:w-2/3 lg:w-2/5 h-screen top-0 left-0 z-50 transition-all duration-300 ${showList ? "translate-x-0" : "-translate-x-full"}`}>
         <div className="grid grid-cols-3 place-items-center w-full pt-4">
           {/* Menu button */}
           <div className="-ml-28">
@@ -247,13 +243,16 @@ function Mobnavbar() {
               </div>
             </div>
           ) : (
-            <Link className="uppercase font-bold" to={"/login"}>
+            <span className="uppercase font-bold" onClick={() => {
+              navigate("/login");
+              setshowList(!showList);
+            }}>
               Login
-            </Link>
+            </span>
           )}
         </button>
       </div>
-      <div onClick={() => setshowList(!showList)} className={`opacity-50 fixed inset-0 z-10 bg-black ${showList ? "" : "hidden"}`}></div>
+      <div onClick={() => setshowList(!showList)} className={`opacity-50 fixed inset-0 z-40 bg-black ${showList ? "" : "hidden"}`}></div>
     </>
   );
 }

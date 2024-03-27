@@ -63,7 +63,7 @@ export default function RegisterPage() {
         )
     }
     return (
-        <main className="flex min-h-full flex-col items-center justify-center py-8">
+        <main className="flex flex-col items-center justify-center py-8">
             <section className=" bg-[#FBFBFB] flex flex-col w-full md:w-[70%] p-2 gap-10 md:p-8">
                 <h1 className="font-playfair-display text-2xl font-bold">Register</h1>
                 {form.formState.errors.root &&
