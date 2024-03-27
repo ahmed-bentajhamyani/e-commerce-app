@@ -41,10 +41,11 @@ function Mobnavbar() {
           className={` ${showSearch ? "block" : "hidden"} w-full flex items-center justify-center`}
         >
           <input
-            onChange={(e) => { setinputField(e.target.value) }}
+            onChange={(e) => {
+              setinputField(e.target.value);
+            }}
             onKeyDown={(e) => {
-              if (e.key == "Enter")
-                navigate(`/search/${inputField}`)
+              if (e.key == "Enter") navigate(`/search/${inputField}`);
             }}
             className="w-[50%] h-full focus:outline-none text-lg"
             placeholder="SEARCH & HIT ENTER . . ."
@@ -65,9 +66,13 @@ function Mobnavbar() {
             </svg>
           </span>
         </div>
-        <div onClick={() => { navigate("/") }} className={` cursor-pointer flex items-center justify-center ${showSearch ? 'hidden' : ''} `}>
-          <img className="h-7" src="/logo.png">
-          </img>
+        <div
+          onClick={() => {
+            navigate("/");
+          }}
+          className={` cursor-pointer flex items-center justify-center ${showSearch ? "hidden" : ""} `}
+        >
+          <img className="h-7" src="/logo.png"></img>
         </div>
         <div>
           <ul
@@ -91,7 +96,8 @@ function Mobnavbar() {
               </svg>
             </li>
             <li
-              className={`transition-all duration-[0.25S]  pr-1 pl-1 h-full flex items-center justify-center transition ease-in duration-100 hover:bg-slate-100 cursor-pointer`} onClick={() => navigate("/wishlist")}
+              className={`transition-all duration-[0.25S]  pr-1 pl-1 h-full flex items-center justify-center transition ease-in duration-100 hover:bg-slate-100 cursor-pointer`}
+              onClick={() => navigate("/wishlist")}
             >
               <svg
                 className="svg-icon"
@@ -130,73 +136,110 @@ function Mobnavbar() {
           </ul>
         </div>
         <div
-          className={` ${showList ? "block" : "hidden"} bg-slate-100 min-w-[100px] absolute top-14 pt-3 pb-3 left-3`}
+          className={`${showList ? "left-0 z-10 w-full" : "left-[-212px] z-[-10] w-screen"} flex  transition-nav duration-300 h-screen absolute top-0 `}
         >
-          <ul
-            className={` transition-all duration-[0.25S]  gap-2 flex flex-col h-full items-center justify-end text-sm`}
-          >
-            <li className="cursor-pointer">
-              <span
-                onClick={() => navigate("/products/new")}
-
-                className="after:transition after:ease-in after:duration-200 relative z-10 after:top-4 hover:after:absolute hover:after:inline-block hover:after:bottom-0 hover:after:left-0 hover:after:w-full hover:after:h-[2px] hover:after:bg-black ">
-                NEW IN
-              </span>
-            </li>
-            <li className="cursor-pointer">
-              <span
-                className="after:transition after:ease-in after:duration-200 relative z-10 after:top-4 hover:after:absolute hover:after:inline-block hover:after:bottom-0 hover:after:left-0 hover:after:w-full hover:after:h-[2px] hover:after:bg-black "
-                onClick={() => navigate("/products/clothing")}
-              >
-                CLOTHING
-              </span>
-            </li>
-            <li className="cursor-pointer">
-              <span
-                className="after:transition after:ease-in after:duration-200 relative z-10 after:top-4 hover:after:absolute hover:after:inline-block hover:after:bottom-0 hover:after:left-0 hover:after:w-full hover:after:h-[2px] hover:after:bg-black "
-                onClick={() => navigate("/products/footwear")}
-              >
-                FOOTWEAR
-              </span>
-            </li>
-            <li className="cursor-pointer">
-              <span
-                className="after:transition after:ease-in after:duration-200 relative z-10 after:top-4 hover:after:absolute hover:after:inline-block hover:after:bottom-0 hover:after:left-0 hover:after:w-full hover:after:h-[2px] hover:after:bg-black "
-                onClick={() => navigate("/products/accessories")}
-              >
-                ACCESSORIES
-              </span>
-            </li>
-            <li className="cursor-pointer">
-              <span
-
-                onClick={() => navigate("/products/bags")}
-                className="after:transition after:ease-in after:duration-200 relative z-10 after:top-4 hover:after:absolute hover:after:inline-block hover:after:bottom-0 hover:after:left-0 hover:after:w-full hover:after:h-[2px] hover:after:bg-black ">
-                BAGS
-              </span>
-            </li>
-            <li className=" cursor-pointer text-red-500">
-              <span onClick={() => navigate("/products/suits")} className="after:transition after:ease-in after:duration-200 relative z-10 after:top-4 hover:after:absolute hover:after:inline-block hover:after:bottom-0 hover:after:left-0 hover:after:w-full hover:after:h-[2px] hover:after:bg-black ">
-                SUITS
-
-              </span>
-            </li>
-            <li>
-              <span className="after:transition after:ease-in after:duration-200 relative z-10 after:top-4 hover:after:absolute hover:after:inline-block hover:after:bottom-0 hover:after:left-0 hover:after:w-full hover:after:h-[2px] hover:after:bg-black ">
-                {
-                  getCurrentUser() ?
+          {" "}
+          <div className={`h-full bg-slate-100 min-w-[200px] `}>
+            <ul
+              className={` transition-all duration-[0.25S] [&>li]:py-3 [&>li]:h-full flex flex-col  items-center justify-start text-sm px-4`}
+            >
+              <li className="cursor-pointer">
+                <span
+                  onClick={() => {
+                    navigate("/products/new");
+                    setshowList(!showList);
+                  }}
+                  className="after:transition after:ease-in after:duration-200 relative z-10 after:top-4 hover:after:absolute hover:after:inline-block hover:after:bottom-0 hover:after:left-0 hover:after:w-full hover:after:h-[2px] hover:after:bg-black "
+                >
+                  NEW IN
+                </span>
+              </li>
+              <li className="cursor-pointer">
+                <span
+                  className="after:transition after:ease-in after:duration-200 relative z-10 after:top-4 hover:after:absolute hover:after:inline-block hover:after:bottom-0 hover:after:left-0 hover:after:w-full hover:after:h-[2px] hover:after:bg-black "
+                  onClick={() => {
+                    navigate("/products/clothing");
+                    setshowList(!showList);
+                  }}
+                >
+                  CLOTHING
+                </span>
+              </li>
+              <li className="cursor-pointer">
+                <span
+                  className="after:transition after:ease-in after:duration-200 relative z-10 after:top-4 hover:after:absolute hover:after:inline-block hover:after:bottom-0 hover:after:left-0 hover:after:w-full hover:after:h-[2px] hover:after:bg-black "
+                  onClick={() => {
+                    navigate("/products/footwear");
+                    setshowList(!showList);
+                  }}
+                >
+                  FOOTWEAR
+                </span>
+              </li>
+              <li className="cursor-pointer">
+                <span
+                  className="after:transition after:ease-in after:duration-200 relative z-10 after:top-4 hover:after:absolute hover:after:inline-block hover:after:bottom-0 hover:after:left-0 hover:after:w-full hover:after:h-[2px] hover:after:bg-black "
+                  onClick={() => {
+                    navigate("/products/accessories");
+                    setshowList(!showList);
+                  }}
+                >
+                  ACCESSORIES
+                </span>
+              </li>
+              <li className="cursor-pointer">
+                <span
+                  onClick={() => {
+                    navigate("/products/bags");
+                    setshowList(!showList);
+                  }}
+                  className="after:transition after:ease-in after:duration-200 relative z-10 after:top-4 hover:after:absolute hover:after:inline-block hover:after:bottom-0 hover:after:left-0 hover:after:w-full hover:after:h-[2px] hover:after:bg-black "
+                >
+                  BAGS
+                </span>
+              </li>
+              <li className=" cursor-pointer text-red-500">
+                <span
+                  onClick={() => {
+                    navigate("/products/suits");
+                    setshowList(!showList);
+                  }}
+                  className="after:transition after:ease-in after:duration-200 relative z-10 after:top-4 hover:after:absolute hover:after:inline-block hover:after:bottom-0 hover:after:left-0 hover:after:w-full hover:after:h-[2px] hover:after:bg-black "
+                >
+                  SUITS
+                </span>
+              </li>
+              <li>
+                <span className="after:transition after:ease-in after:duration-200 relative z-10 after:top-4 hover:after:absolute hover:after:inline-block hover:after:bottom-0 hover:after:left-0 hover:after:w-full hover:after:h-[2px] hover:after:bg-black ">
+                  {getCurrentUser() ? (
                     <div className="flex flex-col items-center border p-2">
                       <div className="w-full flex gap-2">
-                        <PersonIcon/>
+                        <PersonIcon />
                         {getCurrentUser()!.displayName}
                       </div>
-                      <div className="cursor-pointer uppercase font-bold" onClick={() => { signOut(); navigate(0) }}>Sign Out</div>
+                      <div
+                        className="cursor-pointer uppercase font-bold"
+                        onClick={() => {
+                          signOut();
+                          navigate(0);
+                        }}
+                      >
+                        Sign Out
+                      </div>
                     </div>
-                    : <Link className="uppercase font-bold" to={"/login"}>Login</Link>
-                }
-              </span>
-            </li>
-          </ul>
+                  ) : (
+                    <Link className="uppercase font-bold" to={"/login"}>
+                      Login
+                    </Link>
+                  )}
+                </span>
+              </li>
+            </ul>
+          </div>
+          <div
+            onClick={() => setshowList(!showList)}
+            className={`${showList ? "block z-10" : "hidden z-0"} flex-1 bg-slate-500 opacity-50`}
+          ></div>
         </div>
       </nav>
     </>
