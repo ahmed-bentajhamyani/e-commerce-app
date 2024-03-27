@@ -6,7 +6,9 @@ import ShoppingCart from "./icons/ShoppingCart";
 import useToggleWishlist from "@/hooks/useToggleWishlist";
 import { Link } from "react-router-dom";
 
-export default function WishlistRow({ wishlistProduct }: { wishlistProduct: Product }) {
+
+
+export default function WishlistRow({ wishlistProduct, setCount }: { wishlistProduct: Product, setCount: React.Dispatch<React.SetStateAction<number>> }) {
     const { increaseCartQuantity, setShowCart } = useCart();
 
 
@@ -17,6 +19,11 @@ export default function WishlistRow({ wishlistProduct }: { wishlistProduct: Prod
             increaseCartQuantity(wishlistProduct.id);
             setShowCart(true);
         }
+    };
+
+    const removeFromWishlist = () => {
+        toggleWishlist();
+        setCount(prev => prev - 1)
     };
 
     return (
@@ -39,7 +46,7 @@ export default function WishlistRow({ wishlistProduct }: { wishlistProduct: Prod
                 <p className="uppercase font-light">{wishlistProduct?.description}</p>
                 <div className="grid grid-cols-2 gap-2 mt-2">
                     <Button
-                        action={toggleWishlist}
+                        action={removeFromWishlist}
                         style="flex justify-center items-center w-full px-10 py-3 space-x-1 text-sm md:text-base bg-bg-secondary rounded-none hover:bg-text-secondary/60 cursor-pointer whitespace-nowrap disabled:opacity-70 disabled:cursor-default"
                         text="Delete"
                         icon={<Close />}
