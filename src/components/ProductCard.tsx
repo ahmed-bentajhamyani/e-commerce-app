@@ -12,7 +12,7 @@ export interface IProductCard {
 export default memo(function ProductCard({ style, data }: IProductCard) {
   const navigate = useNavigate();
 
-  const { isWished, toggleWishlist } = useToggleWishlist("wishlistProducts");
+  const { isWished, toggleWishlist } = useToggleWishlist("wishlistProducts", data?.id);
 
   return (
     <article className={`flex flex-col col-span-1 m-2 ${style}`}>
@@ -29,7 +29,7 @@ export default memo(function ProductCard({ style, data }: IProductCard) {
         </a>
         <button
           className="wishlist absolute top-3 right-3 outline-none"
-          onClick={() => toggleWishlist(data?.id)}
+          onClick={() => toggleWishlist()}
         >
           {isWished ? (
             <HeartFilledIcon width={30} height={30} />
