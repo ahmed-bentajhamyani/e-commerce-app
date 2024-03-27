@@ -28,7 +28,7 @@ function Mobnavbar() {
   return (
     <>
       <nav
-        className={`lg:hidden flex justify-between transition-all items-center pr-5 pl-5 w-full h-14 bg-white z-10 shadow-sm duration-[0.25S] ${isFixed ? "top-0 fixed " : ""}`}
+        className={`lg:hidden flex justify-between transition-all items-center pr-5 pl-5 w-full h-14 bg-white z-10 shadow-sm duration-[0.25S] ${isFixed ? "top-0 fixed " : ""} `}
       >
         <div
           onClick={
@@ -136,7 +136,7 @@ function Mobnavbar() {
           </ul>
         </div>
         <div
-          className={`${showList ? "left-0 z-10 w-full" : "left-[-212px] z-[-10] w-screen"} flex  transition-nav duration-300 h-screen absolute top-0 `}
+          className={`flex flex-col justify-center items-center overflow-hidden text-primary bg-bg-secondary fixed h-screen top-0 left-0 z-50 transition-all duration-500 ${showList ? "translate-x-0" : "-translate-x-64"}`}
         >
           {" "}
           <div className={`h-full bg-slate-100 min-w-[200px] `}>
@@ -236,11 +236,11 @@ function Mobnavbar() {
               </li>
             </ul>
           </div>
-          <div
-            onClick={() => setshowList(!showList)}
-            className={`${showList ? "block z-10" : "hidden z-0"} flex-1 bg-slate-500 opacity-50`}
-          ></div>
         </div>
+        <div
+          onClick={() => setshowList(!showList)}
+          className={`opacity-50 fixed inset-0 z-10 bg-black ${showList ? "" : "hidden"}`}
+        ></div>
       </nav>
     </>
   );

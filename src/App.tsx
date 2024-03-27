@@ -10,7 +10,7 @@ import ProductPage from "./pages/ProductPage";
 import WishlistPage from "./pages/WishlistPage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
-import SearchPage from "./pages/SearchPage"
+import SearchPage from "./pages/SearchPage";
 import { getAuth } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 
@@ -26,22 +26,20 @@ function App() {
         <main className="flex justify-center items-center h-screen">
           <div
             className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-e-transparent align-[-0.125em] text-surface motion-reduce:animate-[spin_1.5s_linear_infinite] dark:text-white"
-            role="status">
-            <span
-              className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">
-              Loading...</span >
+            role="status"
+          >
+            <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">
+              Loading...
+            </span>
           </div>
-        </main>)
+        </main>
+      );
     }
 
-    return !user ? (
-      <Outlet />
-    ) : (
-      <Navigate to="/" state={{ from: location }} />
-    );
-  }
+    return !user ? <Outlet /> : <Navigate to="/" state={{ from: location }} />;
+  };
   return (
-    <>
+    <div className="flex flex-col justify-between h-screen">
       <Navbar />
       <ScrollToTop>
         <Routes>
@@ -57,7 +55,7 @@ function App() {
         </Routes>
       </ScrollToTop>
       <Footer />
-    </>
+    </div>
   );
 }
 
