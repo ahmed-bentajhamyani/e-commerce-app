@@ -30,7 +30,7 @@ function HomePage() {
       {accessoriesProducts ? (
         <SwiperBox>
           {accessoriesProducts.map((item) => (
-            <SwiperSlide key={item.id} className="!w-[180px] !md:w-[250px]">
+            <SwiperSlide key={item.id} className="!w-[180px] md:!w-[250px] 2xl:!w-[300px] 3xl:!w-[350px]">
               <ProductCard data={item} />
             </SwiperSlide>
           ))}
@@ -77,7 +77,7 @@ function HomePage() {
       {shoeProducts ? (
         <SwiperBox>
           {shoeProducts.map((item) => (
-            <SwiperSlide key={item.id} className="!w-[180px] !md:w-[250px]">
+            <SwiperSlide key={item.id} className="!w-[180px] md:!w-[250px] 2xl:!w-[300px] 3xl:!w-[350px]">
               <ProductCard data={item} />
             </SwiperSlide>
           ))}

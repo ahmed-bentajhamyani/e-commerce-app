@@ -32,7 +32,7 @@ export default function ProductPage() {
   
   function renderProduct(relatedProduct: Product) {
     return (
-      <SwiperSlide className="!w-[180px] !md:w-[250px]">
+      <SwiperSlide className="!w-[180px] md:!w-[250px] 2xl:!w-[300px] 3xl:!w-[350px]">
         <ProductCard data={relatedProduct} />
       </SwiperSlide>
     );
